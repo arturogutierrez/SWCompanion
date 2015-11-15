@@ -21,7 +21,7 @@ ext {
   daggerVersion = '2.0.1'
   rxJavaVersion = '1.0.14'
   rxAndroidVersion = '1.0.1'
-  javaxAnnotationVersion = '10.0-b28'
+  javaxAnnotationVersion = '1.0'
   androidAnnotationsVersion = '21.0.3'
   butterKnifeVersion = '7.0.1'
   picassoVersion = '2.5.2'
@@ -38,7 +38,7 @@ ext {
                               dagger            : "com.google.dagger:dagger:${daggerVersion}",
                               rxJava            : "io.reactivex:rxjava:${rxJavaVersion}",
                               rxAndroid         : "io.reactivex:rxandroid:${rxAndroidVersion}",
-                              javaxAnnotation   : "org.glassfish:javax.annotation:${javaxAnnotationVersion}",
+                              javaxAnnotation   : "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
                               butterKnife       : "com.jakewharton:butterknife:${butterKnifeVersion}",
                               appCompat         : "com.android.support:appcompat-v7:${appCompatVersion}",
                               design            : "com.android.support:design:${designVersion}",
@@ -49,7 +49,7 @@ ext {
 
   domainDependencies = [daggerCompiler : "com.google.dagger:dagger-compiler:${daggerVersion}",
                         dagger         : "com.google.dagger:dagger:${daggerVersion}",
-                        javaxAnnotation: "org.glassfish:javax.annotation:${javaxAnnotationVersion}",
+                        javaxAnnotation: "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
                         rxJava         : "io.reactivex:rxjava:${rxJavaVersion}",]
 
   domainTestDependencies = [junit  : "junit:junit:${jUnitVersion}",
@@ -59,7 +59,7 @@ ext {
                       dagger            : "com.google.dagger:dagger:${daggerVersion}",
                       rxJava            : "io.reactivex:rxjava:${rxJavaVersion}",
                       rxAndroid         : "io.reactivex:rxandroid:${rxAndroidVersion}",
-                      javaxAnnotation   : "org.glassfish:javax.annotation:${javaxAnnotationVersion}",
+                      javaxAnnotation   : "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
                       androidAnnotations: "com.android.support:support-annotations:${androidAnnotationsVersion}",
                       realm             : "io.realm:realm-android:${realmVersion}",]
 }
