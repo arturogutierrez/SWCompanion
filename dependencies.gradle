@@ -1,73 +1,65 @@
 allprojects {
-    repositories {
-        jcenter()
-    }
+  repositories {
+    jcenter()
+  }
 }
 
 ext {
-    // SDK version
-    androidBuildToolsVersion = "23.0.2"
-    androidMinSdkVersion = 15
-    androidTargetSdkVersion = 22
-    androidCompileSdkVersion = 23
+  // SDK version
+  androidBuildToolsVersion = "23.0.2"
+  androidMinSdkVersion = 15
+  androidTargetSdkVersion = 22
+  androidCompileSdkVersion = 23
 
-    // Google Libraries
-    appCompatVersion = '23.1.0'
-    recyclerViewVersion = '23.1.0'
-    cardViewVersion = '23.1.0'
-    designVersion = '23.1.0'
+  // Google Libraries
+  appCompatVersion = '23.1.0'
+  recyclerViewVersion = '23.1.0'
+  cardViewVersion = '23.1.0'
+  designVersion = '23.1.0'
 
-    // Libraries
-    daggerVersion = '2.0.1'
-    rxJavaVersion = '1.0.14'
-    rxAndroidVersion = '1.0.1'
-    javaxAnnotationVersion = '10.0-b28'
-    androidAnnotationsVersion = '21.0.3'
-    butterKnifeVersion = '7.0.1'
-    picassoVersion = '2.5.2'
-    realmVersion = '0.82.1'
-    expandableSelectorVersion = '1.0.0'
+  // Libraries
+  daggerVersion = '2.0.1'
+  rxJavaVersion = '1.0.14'
+  rxAndroidVersion = '1.0.1'
+  javaxAnnotationVersion = '10.0-b28'
+  androidAnnotationsVersion = '21.0.3'
+  butterKnifeVersion = '7.0.1'
+  picassoVersion = '2.5.2'
+  realmVersion = '0.82.1'
+  expandableSelectorVersion = '1.0.0'
 
-    // Testing
-    robolectricVersion = '2.4'
-    jUnitVersion = '4.12'
-    mockitoVersion = '1.10.19'
+  // Testing
+  robolectricVersion = '2.4'
+  jUnitVersion = '4.12'
+  mockitoVersion = '1.10.19'
 
 
-    presentationDependencies = [
-            daggerCompiler:     "com.google.dagger:dagger-compiler:${daggerVersion}",
-            dagger:             "com.google.dagger:dagger:${daggerVersion}",
-            rxJava:             "io.reactivex:rxjava:${rxJavaVersion}",
-            rxAndroid:          "io.reactivex:rxandroid:${rxAndroidVersion}",
-            javaxAnnotation:    "org.glassfish:javax.annotation:${javaxAnnotationVersion}",
-            butterKnife:        "com.jakewharton:butterknife:${butterKnifeVersion}",
-            appCompat:          "com.android.support:appcompat-v7:${appCompatVersion}",
-            design:             "com.android.support:design:${designVersion}",
-            recyclerView:       "com.android.support:recyclerview-v7:${recyclerViewVersion}",
-            cardView:           "com.android.support:cardview-v7:${cardViewVersion}",
-            picasso:            "com.squareup.picasso:picasso:${picassoVersion}",
-            expandableSelector: "com.karumi:expandableselector:${expandableSelectorVersion}"
-    ]
+  presentationDependencies = [daggerCompiler    : "com.google.dagger:dagger-compiler:${daggerVersion}",
+                              dagger            : "com.google.dagger:dagger:${daggerVersion}",
+                              rxJava            : "io.reactivex:rxjava:${rxJavaVersion}",
+                              rxAndroid         : "io.reactivex:rxandroid:${rxAndroidVersion}",
+                              javaxAnnotation   : "org.glassfish:javax.annotation:${javaxAnnotationVersion}",
+                              butterKnife       : "com.jakewharton:butterknife:${butterKnifeVersion}",
+                              appCompat         : "com.android.support:appcompat-v7:${appCompatVersion}",
+                              design            : "com.android.support:design:${designVersion}",
+                              recyclerView      : "com.android.support:recyclerview-v7:${recyclerViewVersion}",
+                              cardView          : "com.android.support:cardview-v7:${cardViewVersion}",
+                              picasso           : "com.squareup.picasso:picasso:${picassoVersion}",
+                              expandableSelector: "com.karumi:expandableselector:${expandableSelectorVersion}"]
 
-    domainDependencies = [
-            daggerCompiler:     "com.google.dagger:dagger-compiler:${daggerVersion}",
-            dagger:             "com.google.dagger:dagger:${daggerVersion}",
-            javaxAnnotation:    "org.glassfish:javax.annotation:${javaxAnnotationVersion}",
-            rxJava:             "io.reactivex:rxjava:${rxJavaVersion}",
-    ]
+  domainDependencies = [daggerCompiler : "com.google.dagger:dagger-compiler:${daggerVersion}",
+                        dagger         : "com.google.dagger:dagger:${daggerVersion}",
+                        javaxAnnotation: "org.glassfish:javax.annotation:${javaxAnnotationVersion}",
+                        rxJava         : "io.reactivex:rxjava:${rxJavaVersion}",]
 
-    domainTestDependencies = [
-            junit:              "junit:junit:${jUnitVersion}",
-            mockito:            "org.mockito:mockito-core:${mockitoVersion}",
-    ]
+  domainTestDependencies = [junit  : "junit:junit:${jUnitVersion}",
+                            mockito: "org.mockito:mockito-core:${mockitoVersion}",]
 
-    dataDependencies = [
-            daggerCompiler:     "com.google.dagger:dagger-compiler:${daggerVersion}",
-            dagger:             "com.google.dagger:dagger:${daggerVersion}",
-            rxJava:             "io.reactivex:rxjava:${rxJavaVersion}",
-            rxAndroid:          "io.reactivex:rxandroid:${rxAndroidVersion}",
-            javaxAnnotation:    "org.glassfish:javax.annotation:${javaxAnnotationVersion}",
-            androidAnnotations: "com.android.support:support-annotations:${androidAnnotationsVersion}",
-            realm:              "io.realm:realm-android:${realmVersion}",
-    ]
+  dataDependencies = [daggerCompiler    : "com.google.dagger:dagger-compiler:${daggerVersion}",
+                      dagger            : "com.google.dagger:dagger:${daggerVersion}",
+                      rxJava            : "io.reactivex:rxjava:${rxJavaVersion}",
+                      rxAndroid         : "io.reactivex:rxandroid:${rxAndroidVersion}",
+                      javaxAnnotation   : "org.glassfish:javax.annotation:${javaxAnnotationVersion}",
+                      androidAnnotations: "com.android.support:support-annotations:${androidAnnotationsVersion}",
+                      realm             : "io.realm:realm-android:${realmVersion}",]
 }
