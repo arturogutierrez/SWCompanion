@@ -1,6 +1,6 @@
 package com.arturogutierrez.swcompanion.domain.repository;
 
-import com.arturogutierrez.swcompanion.domain.model.PlanetModel;
+import com.arturogutierrez.swcompanion.domain.model.Planet;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import rx.Observable;
 
 public interface PlanetRepository {
 
-    Observable<List<PlanetModel>> getAllPlanets(int page);
+    Observable<List<Planet>> getAllPlanets(int page);
 
-    Observable<PlanetModel> getPlanet(int planetId);
+    Observable<Planet> getPlanet(int planetId);
 }
