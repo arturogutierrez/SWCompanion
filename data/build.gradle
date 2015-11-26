@@ -37,4 +37,6 @@ dependencies {
   compile dataDependencies.rxAndroid
   compile dataDependencies.androidAnnotations
   compile dataDependencies.realm
+  compile dataDependencies.gson
+  compile dataDependencies.retrofit
 }
