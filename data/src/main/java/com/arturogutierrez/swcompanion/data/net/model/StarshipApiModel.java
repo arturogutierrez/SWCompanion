@@ -1,0 +1,81 @@
+package com.arturogutierrez.swcompanion.data.net.model;
+
+import com.google.gson.annotations.SerializedName;
+import java.util.Date;
+import java.util.List;
+
+public class StarshipApiModel {
+
+  String name;
+  String model;
+  @SerializedName("starship_class")
+  String starshipClass;
+  String manufacturer;
+  @SerializedName("cost_in_credits")
+  String costInCredits;
+  String length;
+  @SerializedName("crew")
+  String crewNumber;
+  @SerializedName("passengers")
+  String passengersNumber;
+  String url;
+  @SerializedName("created")
+  Date createdAt;
+  @SerializedName("edited")
+  Date updatedAt;
+
+  List<String> films;
+  List<String> pilots;
+
+  public String getName() {
+    return name;
+  }
+
+  public String getModel() {
+    return model;
+  }
+
+  public String getStarshipClass() {
+    return starshipClass;
+  }
+
+  public String getManufacturer() {
+    return manufacturer;
+  }
+
+  public String getCostInCredits() {
+    return costInCredits;
+  }
+
+  public String getLength() {
+    return length;
+  }
+
+  public String getCrewNumber() {
+    return crewNumber;
+  }
+
+  public String getPassengersNumber() {
+    return passengersNumber;
+  }
+
+  public String getUrl() {
+    return url;
+  }
+
+  public Date getCreatedAt() {
+    return createdAt;
+  }
+
+  public Date getUpdatedAt() {
+    return updatedAt;
+  }
+
+  public List<String> getFilms() {
+    return films;
+  }
+
+  public List<String> getPilots() {
+    return pilots;
+  }
+}

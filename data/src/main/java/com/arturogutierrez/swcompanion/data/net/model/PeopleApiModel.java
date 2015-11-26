@@ -1,5 +1,7 @@
 package com.arturogutierrez.swcompanion.data.net.model;
 
+import com.google.gson.annotations.SerializedName;
+import java.util.Date;
 import java.util.List;
 
 public class PeopleApiModel {
@@ -10,6 +12,10 @@ public class PeopleApiModel {
   String height;
   String mass;
   String url;
+  @SerializedName("created")
+  Date createdAt;
+  @SerializedName("edited")
+  Date updatedAt;
 
   List<String> films;
   List<String> species;
@@ -54,5 +60,13 @@ public class PeopleApiModel {
 
   public List<String> getVehicles() {
     return vehicles;
+  }
+
+  public Date getCreatedAt() {
+    return createdAt;
+  }
+
+  public Date getUpdatedAt() {
+    return updatedAt;
   }
 }
