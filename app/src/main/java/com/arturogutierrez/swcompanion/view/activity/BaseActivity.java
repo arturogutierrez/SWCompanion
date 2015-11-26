@@ -2,6 +2,8 @@ package com.arturogutierrez.swcompanion.view.activity;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -61,6 +63,12 @@ public abstract class BaseActivity extends AppCompatActivity {
   }
 
   protected abstract int getLayoutResource();
+
+  protected void addFragment(int containerViewId, Fragment fragment) {
+    FragmentTransaction fragmentTransaction = this.getSupportFragmentManager().beginTransaction();
+    fragmentTransaction.add(containerViewId, fragment);
+    fragmentTransaction.commit();
+  }
 
   private void configureToolbar() {
     setSupportActionBar(toolbar);

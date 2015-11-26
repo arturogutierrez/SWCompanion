@@ -12,6 +12,7 @@ ext {
   androidCompileSdkVersion = 23
 
   // Google Libraries
+  supportVersion = '23.1.0'
   appCompatVersion = '23.1.0'
   recyclerViewVersion = '23.1.0'
   cardViewVersion = '23.1.0'
@@ -42,6 +43,7 @@ ext {
                               rxAndroid         : "io.reactivex:rxandroid:${rxAndroidVersion}",
                               javaxAnnotation   : "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
                               butterKnife       : "com.jakewharton:butterknife:${butterKnifeVersion}",
+                              supportVersion    : "com.android.support:support-v4:${supportVersion}",
                               appCompat         : "com.android.support:appcompat-v7:${appCompatVersion}",
                               design            : "com.android.support:design:${designVersion}",
                               recyclerView      : "com.android.support:recyclerview-v7:${recyclerViewVersion}",
