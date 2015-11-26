@@ -6,11 +6,11 @@ import java.util.List;
 
 public class PeopleApiModel {
 
-  String peopleId;
   String name;
   String gender;
   String height;
   String mass;
+  String homeworld;
   String url;
   @SerializedName("created")
   Date createdAt;
@@ -21,10 +21,6 @@ public class PeopleApiModel {
   List<String> species;
   List<String> starships;
   List<String> vehicles;
-
-  public String getPeopleId() {
-    return peopleId;
-  }
 
   public String getName() {
     return name;
@@ -40,6 +36,10 @@ public class PeopleApiModel {
 
   public String getMass() {
     return mass;
+  }
+
+  public String getHomeworld() {
+    return homeworld;
   }
 
   public String getUrl() {

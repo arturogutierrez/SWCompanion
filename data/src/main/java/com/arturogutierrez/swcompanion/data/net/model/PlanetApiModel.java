@@ -6,7 +6,6 @@ import java.util.List;
 
 public class PlanetApiModel {
 
-  String planetId;
   String name;
   String diameter;
   String gravity;
@@ -23,10 +22,6 @@ public class PlanetApiModel {
 
   List<String> films;
   List<String> residents;
-
-  public String getPlanetId() {
-    return planetId;
-  }
 
   public String getName() {
     return name;
