@@ -26,7 +26,7 @@ ext {
   androidAnnotationsVersion = '22.2.0'
   butterKnifeVersion = '7.0.1'
   picassoVersion = '2.5.2'
-  realmVersion = '0.82.1'
+  realmVersion = '0.85.1'
   expandableSelectorVersion = '1.0.0'
   gsonVersion = '2.4'
   retrofitVersion = '1.6.0'
