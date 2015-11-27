@@ -2,7 +2,7 @@ package com.arturogutierrez.swcompanion.domain.model;
 
 import java.util.List;
 
-public class Planet {
+public class Planet extends Item {
 
   private final String planetId;
   private final String name;
@@ -13,13 +13,12 @@ public class Planet {
   private final int orbitalPeriodDays;
   private final List<Film> films;
   private final List<People> residents;
-  private final boolean dirty;
-  private final long updatedAt;
-  private final long createdAt;
 
   public Planet(String planetId, String name, int diameter, float gravity, long population,
       int rotationPeriodHours, int orbitalPeriodDays, List<Film> films, List<People> residents,
       boolean dirty, long updatedAt, long createdAt) {
+    super(dirty, updatedAt, createdAt);
+
     this.planetId = planetId;
     this.name = name;
     this.diameter = diameter;
@@ -29,9 +28,6 @@ public class Planet {
     this.orbitalPeriodDays = orbitalPeriodDays;
     this.films = films;
     this.residents = residents;
-    this.dirty = dirty;
-    this.updatedAt = updatedAt;
-    this.createdAt = createdAt;
   }
 
   public String getPlanetId() {
@@ -68,17 +64,5 @@ public class Planet {
 
   public List<People> getResidents() {
     return residents;
-  }
-
-  public boolean isDirty() {
-    return dirty;
-  }
-
-  public long getUpdatedAt() {
-    return updatedAt;
-  }
-
-  public long getCreatedAt() {
-    return createdAt;
   }
 }

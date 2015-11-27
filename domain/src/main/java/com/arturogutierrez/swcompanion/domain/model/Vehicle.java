@@ -2,7 +2,7 @@ package com.arturogutierrez.swcompanion.domain.model;
 
 import java.util.List;
 
-public class Vehicle {
+public class Vehicle extends Item {
 
   private final String vehicleId;
   private final String name;
@@ -14,13 +14,12 @@ public class Vehicle {
   private final int passengersNumber;
   private final List<Film> films;
   private final List<People> pilots;
-  private final boolean dirty;
-  private final long updatedAt;
-  private final long createdAt;
 
   public Vehicle(String vehicleId, String name, String model, String vehicleClass,
       String manufacturer, int length, int crewNumber, int passengersNumber, List<Film> films,
       List<People> pilots, boolean dirty, long updatedAt, long createdAt) {
+    super(dirty, updatedAt, createdAt);
+
     this.vehicleId = vehicleId;
     this.name = name;
     this.model = model;
@@ -31,9 +30,6 @@ public class Vehicle {
     this.passengersNumber = passengersNumber;
     this.films = films;
     this.pilots = pilots;
-    this.dirty = dirty;
-    this.updatedAt = updatedAt;
-    this.createdAt = createdAt;
   }
 
   public String getVehicleId() {
@@ -74,17 +70,5 @@ public class Vehicle {
 
   public List<People> getPilots() {
     return pilots;
-  }
-
-  public boolean isDirty() {
-    return dirty;
-  }
-
-  public long getUpdatedAt() {
-    return updatedAt;
-  }
-
-  public long getCreatedAt() {
-    return createdAt;
   }
 }

@@ -2,7 +2,7 @@ package com.arturogutierrez.swcompanion.domain.model;
 
 import java.util.List;
 
-public class Specie {
+public class Specie extends Item {
 
   private final String specieId;
   private final String name;
@@ -17,14 +17,13 @@ public class Specie {
   private final String homeworld;
   private final List<Film> films;
   private final List<People> people;
-  private final boolean dirty;
-  private final long updatedAt;
-  private final long createdAt;
 
   public Specie(String specieId, String name, String classification, String designation,
       float averageHeight, int averageLifespan, String eyeColors, String hairColors,
       String skinColors, String language, String homeworld, List<Film> films, List<People> people,
       boolean dirty, long updatedAt, long createdAt) {
+    super(dirty, updatedAt, createdAt);
+
     this.specieId = specieId;
     this.name = name;
     this.classification = classification;
@@ -38,9 +37,6 @@ public class Specie {
     this.homeworld = homeworld;
     this.films = films;
     this.people = people;
-    this.dirty = dirty;
-    this.updatedAt = updatedAt;
-    this.createdAt = createdAt;
   }
 
   public String getSpecieId() {
@@ -93,17 +89,5 @@ public class Specie {
 
   public List<People> getPeople() {
     return people;
-  }
-
-  public boolean isDirty() {
-    return dirty;
-  }
-
-  public long getUpdatedAt() {
-    return updatedAt;
-  }
-
-  public long getCreatedAt() {
-    return createdAt;
   }
 }

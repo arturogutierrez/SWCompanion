@@ -3,7 +3,7 @@ package com.arturogutierrez.swcompanion.domain.model;
 import java.util.Date;
 import java.util.List;
 
-public class Film {
+public class Film extends Item {
 
   private final String filmId;
   private final String title;
@@ -16,14 +16,13 @@ public class Film {
   private final List<Specie> species;
   private final List<Starship> starships;
   private final List<Vehicle> vehicles;
-  private final boolean dirty;
-  private final long updatedAt;
-  private final long createdAt;
 
   public Film(String filmId, String title, int episode, String openingCrawl, String producer,
-      Date releaseDate, List<People> characters, List<Planet> planets,
-      List<Specie> species, List<Starship> starships, List<Vehicle> vehicles,
-      boolean dirty, long updatedAt, long createdAt) {
+      Date releaseDate, List<People> characters, List<Planet> planets, List<Specie> species,
+      List<Starship> starships, List<Vehicle> vehicles, boolean dirty, long updatedAt,
+      long createdAt) {
+    super(dirty, updatedAt, createdAt);
+
     this.filmId = filmId;
     this.title = title;
     this.episode = episode;
@@ -35,9 +34,6 @@ public class Film {
     this.species = species;
     this.starships = starships;
     this.vehicles = vehicles;
-    this.dirty = dirty;
-    this.updatedAt = updatedAt;
-    this.createdAt = createdAt;
   }
 
   public String getFilmId() {
@@ -82,17 +78,5 @@ public class Film {
 
   public List<Vehicle> getVehicles() {
     return vehicles;
-  }
-
-  public boolean isDirty() {
-    return dirty;
-  }
-
-  public long getUpdatedAt() {
-    return updatedAt;
-  }
-
-  public long getCreatedAt() {
-    return createdAt;
   }
 }

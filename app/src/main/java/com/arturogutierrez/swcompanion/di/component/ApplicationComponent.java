@@ -3,6 +3,8 @@ package com.arturogutierrez.swcompanion.di.component;
 import android.content.Context;
 import android.view.LayoutInflater;
 import com.arturogutierrez.swcompanion.di.module.ApplicationModule;
+import com.arturogutierrez.swcompanion.domain.executor.PostExecutionThread;
+import com.arturogutierrez.swcompanion.domain.executor.ThreadExecutor;
 import com.arturogutierrez.swcompanion.view.activity.BaseActivity;
 import dagger.Component;
 import javax.inject.Singleton;
@@ -16,4 +18,8 @@ public interface ApplicationComponent {
   Context context();
 
   LayoutInflater layoutInflater();
+
+  ThreadExecutor threadExecutor();
+
+  PostExecutionThread postExecutionThread();
 }
