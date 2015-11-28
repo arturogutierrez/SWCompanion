@@ -3,6 +3,7 @@ package com.arturogutierrez.swcompanion.view.fragment;
 import android.os.Bundle;
 import com.arturogutierrez.swcompanion.di.component.RecentItemsComponent;
 import com.arturogutierrez.swcompanion.domain.model.Film;
+import com.arturogutierrez.swcompanion.model.FilmModel;
 import com.arturogutierrez.swcompanion.presenter.RecentItemsPresenter;
 import com.arturogutierrez.swcompanion.view.RecentItemsView;
 import java.util.List;
@@ -48,6 +49,7 @@ public class RecentItemsFragment extends BaseFragment implements RecentItemsView
 
   private void initialize() {
     initializeInjector();
+    recentItemsPresenter.setView(this);
   }
 
   private void initializeInjector() {
@@ -69,7 +71,7 @@ public class RecentItemsFragment extends BaseFragment implements RecentItemsView
   }
 
   @Override
-  public void renderRecentItems(List<Film> films) {
+  public void renderRecentItems(List<FilmModel> films) {
 
   }
 

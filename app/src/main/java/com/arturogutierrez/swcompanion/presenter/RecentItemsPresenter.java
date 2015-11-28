@@ -4,6 +4,7 @@ import com.arturogutierrez.swcompanion.di.PerActivity;
 import com.arturogutierrez.swcompanion.domain.interactor.DefaultSubscriber;
 import com.arturogutierrez.swcompanion.domain.interactor.RecentItemsInteractor;
 import com.arturogutierrez.swcompanion.domain.model.Item;
+import com.arturogutierrez.swcompanion.view.RecentItemsView;
 import java.util.List;
 import javax.inject.Inject;
 
@@ -12,9 +13,15 @@ public class RecentItemsPresenter extends DefaultSubscriber<List<Item>> implemen
 
   private final RecentItemsInteractor recentItemsInteractor;
 
+  private RecentItemsView recentItemsView;
+
   @Inject
   public RecentItemsPresenter(RecentItemsInteractor recentItemsInteractor) {
     this.recentItemsInteractor = recentItemsInteractor;
+  }
+
+  public void setView(RecentItemsView recentItemsView) {
+    this.recentItemsView = recentItemsView;
   }
 
   @Override
@@ -51,15 +58,16 @@ public class RecentItemsPresenter extends DefaultSubscriber<List<Item>> implemen
 
   @Override
   public void onNext(List<Item> recentItems) {
-    // TODO: Call to view to show the items
+    // TODO: Convert to app model
+    //recentItemsView.renderRecentItems(recentItemsModel);
   }
 
   private void showLoading() {
-    // TODO: Call to view to show loading
+    recentItemsView.showLoading();
   }
 
   private void hideLoading() {
-    // TODO: call to view to hide loading
+    recentItemsView.hideLoading();
   }
 
   private void retrieveRecentItems() {
