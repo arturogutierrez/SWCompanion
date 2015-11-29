@@ -2,8 +2,7 @@ package com.arturogutierrez.swcompanion.view.fragment;
 
 import android.os.Bundle;
 import com.arturogutierrez.swcompanion.di.component.RecentItemsComponent;
-import com.arturogutierrez.swcompanion.domain.model.Film;
-import com.arturogutierrez.swcompanion.model.FilmModel;
+import com.arturogutierrez.swcompanion.model.ItemModel;
 import com.arturogutierrez.swcompanion.presenter.RecentItemsPresenter;
 import com.arturogutierrez.swcompanion.view.RecentItemsView;
 import java.util.List;
@@ -71,7 +70,7 @@ public class RecentItemsFragment extends BaseFragment implements RecentItemsView
   }
 
   @Override
-  public void renderRecentItems(List<FilmModel> films) {
+  public void renderRecentItems(List<ItemModel> items) {
 
   }
 

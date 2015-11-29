@@ -1,4 +1,4 @@
 package com.arturogutierrez.swcompanion.model;
 
-public class FilmModel {
+public class ItemModel {
 }
