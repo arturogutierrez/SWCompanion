@@ -1,10 +1,10 @@
-package com.arturogutierrez.swcompanion.domain.repository;
+package com.arturogutierrez.swcompanion.data.repository.datasource;
 
 import com.arturogutierrez.swcompanion.domain.model.Film;
 import java.util.List;
 import rx.Observable;
 
-public interface FilmRepository {
+public interface SWDataStore {
 
   Observable<List<Film>> getFilms(int page);
 

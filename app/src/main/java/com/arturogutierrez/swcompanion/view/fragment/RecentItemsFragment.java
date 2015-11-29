@@ -1,6 +1,7 @@
 package com.arturogutierrez.swcompanion.view.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import com.arturogutierrez.swcompanion.di.component.RecentItemsComponent;
 import com.arturogutierrez.swcompanion.model.ItemModel;
 import com.arturogutierrez.swcompanion.presenter.RecentItemsPresenter;
@@ -71,7 +72,8 @@ public class RecentItemsFragment extends BaseFragment implements RecentItemsView
 
   @Override
   public void renderRecentItems(List<ItemModel> items) {
-
+    Log.d("TAG", "" + items.size());
+    // TODO: Render items
   }
 
   @Override

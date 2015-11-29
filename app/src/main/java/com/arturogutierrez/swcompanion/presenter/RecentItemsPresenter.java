@@ -4,6 +4,8 @@ import com.arturogutierrez.swcompanion.di.PerActivity;
 import com.arturogutierrez.swcompanion.domain.interactor.DefaultSubscriber;
 import com.arturogutierrez.swcompanion.domain.interactor.RecentItemsInteractor;
 import com.arturogutierrez.swcompanion.domain.model.Item;
+import com.arturogutierrez.swcompanion.model.ItemModel;
+import com.arturogutierrez.swcompanion.model.mapper.ItemModelMapper;
 import com.arturogutierrez.swcompanion.view.RecentItemsView;
 import java.util.List;
 import javax.inject.Inject;
@@ -12,12 +14,15 @@ import javax.inject.Inject;
 public class RecentItemsPresenter extends DefaultSubscriber<List<Item>> implements Presenter {
 
   private final RecentItemsInteractor recentItemsInteractor;
+  private final ItemModelMapper itemModelMapper;
 
   private RecentItemsView recentItemsView;
 
   @Inject
-  public RecentItemsPresenter(RecentItemsInteractor recentItemsInteractor) {
+  public RecentItemsPresenter(RecentItemsInteractor recentItemsInteractor,
+      ItemModelMapper itemModelMapper) {
     this.recentItemsInteractor = recentItemsInteractor;
+    this.itemModelMapper = itemModelMapper;
   }
 
   public void setView(RecentItemsView recentItemsView) {
@@ -59,7 +64,8 @@ public class RecentItemsPresenter extends DefaultSubscriber<List<Item>> implemen
   @Override
   public void onNext(List<Item> recentItems) {
     // TODO: Convert to app model
-    //recentItemsView.renderRecentItems(recentItemsModel);
+    List<ItemModel> recentItemsModel = itemModelMapper.transform(recentItems);
+    recentItemsView.renderRecentItems(recentItemsModel);
   }
 
   private void showLoading() {
@@ -71,6 +77,6 @@ public class RecentItemsPresenter extends DefaultSubscriber<List<Item>> implemen
   }
 
   private void retrieveRecentItems() {
-    //recentItemsInteractor.execute(this);
+    recentItemsInteractor.execute(this);
   }
 }
