@@ -1,4 +1,4 @@
-package com.arturogutierrez.swcompanion.data.net.model;
+package com.arturogutierrez.swcompanion.data.net.api.model;
 
 import java.util.List;
 

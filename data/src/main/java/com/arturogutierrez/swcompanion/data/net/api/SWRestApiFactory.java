@@ -1,4 +1,4 @@
-package com.arturogutierrez.swcompanion.data.net;
+package com.arturogutierrez.swcompanion.data.net.api;
 
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;

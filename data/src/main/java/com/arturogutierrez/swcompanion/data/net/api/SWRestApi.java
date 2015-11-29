@@ -1,12 +1,12 @@
-package com.arturogutierrez.swcompanion.data.net;
+package com.arturogutierrez.swcompanion.data.net.api;
 
-import com.arturogutierrez.swcompanion.data.net.model.FilmApiModel;
-import com.arturogutierrez.swcompanion.data.net.model.ListApiModel;
-import com.arturogutierrez.swcompanion.data.net.model.PeopleApiModel;
-import com.arturogutierrez.swcompanion.data.net.model.PlanetApiModel;
-import com.arturogutierrez.swcompanion.data.net.model.SpecieApiModel;
-import com.arturogutierrez.swcompanion.data.net.model.StarshipApiModel;
-import com.arturogutierrez.swcompanion.data.net.model.VehicleApiModel;
+import com.arturogutierrez.swcompanion.data.net.api.model.FilmApiModel;
+import com.arturogutierrez.swcompanion.data.net.api.model.ListApiModel;
+import com.arturogutierrez.swcompanion.data.net.api.model.PeopleApiModel;
+import com.arturogutierrez.swcompanion.data.net.api.model.PlanetApiModel;
+import com.arturogutierrez.swcompanion.data.net.api.model.SpecieApiModel;
+import com.arturogutierrez.swcompanion.data.net.api.model.StarshipApiModel;
+import com.arturogutierrez.swcompanion.data.net.api.model.VehicleApiModel;
 import retrofit.http.GET;
 import retrofit.http.Path;
 import retrofit.http.Query;
