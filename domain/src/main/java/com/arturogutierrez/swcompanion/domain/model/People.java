@@ -32,6 +32,21 @@ public class People extends Item {
     this.vehicles = vehicles;
   }
 
+  public People(String peopleId) {
+    super();
+
+    this.peopleId = peopleId;
+    this.name = null;
+    this.gender = null;
+    this.height = 0;
+    this.mass = 0;
+    this.homeworld = null;
+    this.films = null;
+    this.species = null;
+    this.starships = null;
+    this.vehicles = null;
+  }
+
   public String getPeopleId() {
     return peopleId;
   }

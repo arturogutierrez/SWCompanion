@@ -12,6 +12,12 @@ public abstract class Item {
     this.createdAt = createdAt;
   }
 
+  protected Item() {
+    this.dirty = true;
+    this.updatedAt = 0;
+    this.createdAt = 0;
+  }
+
   public boolean isDirty() {
     return dirty;
   }
