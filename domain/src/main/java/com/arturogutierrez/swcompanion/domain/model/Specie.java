@@ -39,6 +39,24 @@ public class Specie extends Item {
     this.people = people;
   }
 
+  public Specie(String specieId) {
+    super();
+
+    this.specieId = specieId;
+    this.name = null;
+    this.classification = null;
+    this.designation = null;
+    this.averageHeight = 0f;
+    this.averageLifespan = 0;
+    this.eyeColors = null;
+    this.hairColors = null;
+    this.skinColors = null;
+    this.language = null;
+    this.homeworld = null;
+    this.films = null;
+    this.people = null;
+  }
+
   public String getSpecieId() {
     return specieId;
   }

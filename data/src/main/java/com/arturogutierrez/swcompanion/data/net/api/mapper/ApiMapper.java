@@ -32,4 +32,12 @@ public abstract class ApiMapper {
 
     return date.getTime();
   }
+
+  protected int intForText(String text) {
+    try {
+      return Integer.parseInt(text);
+    } catch (NumberFormatException nfe) {
+      return 0;
+    }
+  }
 }

@@ -34,6 +34,22 @@ public class Starship extends Item {
     this.pilots = pilots;
   }
 
+  public Starship(String starshipId) {
+    super();
+
+    this.starshipId = starshipId;
+    this.name = null;
+    this.model = null;
+    this.starshipClass = null;
+    this.manufacturer = null;
+    this.costInCredits = 0L;
+    this.length = 0;
+    this.crewNumber = 0;
+    this.passengersNumber = 0;
+    this.films = null;
+    this.pilots = null;
+  }
+
   public String getStarshipId() {
     return starshipId;
   }

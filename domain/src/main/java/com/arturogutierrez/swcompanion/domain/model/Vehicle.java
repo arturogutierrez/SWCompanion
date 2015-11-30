@@ -32,6 +32,21 @@ public class Vehicle extends Item {
     this.pilots = pilots;
   }
 
+  public Vehicle(String vehicleId) {
+    super();
+
+    this.vehicleId = vehicleId;
+    this.name = null;
+    this.model = null;
+    this.vehicleClass = null;
+    this.manufacturer = null;
+    this.length = 0;
+    this.crewNumber = 0;
+    this.passengersNumber = 0;
+    this.films = null;
+    this.pilots = null;
+  }
+
   public String getVehicleId() {
     return vehicleId;
   }

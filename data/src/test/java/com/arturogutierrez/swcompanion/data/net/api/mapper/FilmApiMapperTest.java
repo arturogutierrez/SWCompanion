@@ -2,7 +2,6 @@ package com.arturogutierrez.swcompanion.data.net.api.mapper;
 
 import com.arturogutierrez.swcompanion.data.ApplicationTestCase;
 import com.arturogutierrez.swcompanion.data.net.api.model.FilmApiModel;
-import com.arturogutierrez.swcompanion.data.net.api.model.ListApiModel;
 import com.arturogutierrez.swcompanion.domain.model.Film;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -34,14 +33,8 @@ public class FilmApiMapperTest extends ApplicationTestCase {
 
   @Before
   public void setUp() {
-    CharacterApiMapper characterApiMapper = new CharacterApiMapper();
-    PlanetApiMapper planetApiMapper = new PlanetApiMapper();
-    SpecieApiMapper specieApiMapper = new SpecieApiMapper();
-    StarshipApiMapper starshipApiMapper = new StarshipApiMapper();
-    VehicleApiMapper vehicleApiMapper = new VehicleApiMapper();
-    filmApiMapper =
-        new FilmApiMapper(characterApiMapper, planetApiMapper, specieApiMapper, starshipApiMapper,
-            vehicleApiMapper);
+    DirtyApiMapper dirtyApiMapper = new DirtyApiMapper();
+    filmApiMapper = new FilmApiMapper(dirtyApiMapper);
   }
 
   @Test
@@ -54,6 +47,7 @@ public class FilmApiMapperTest extends ApplicationTestCase {
     assertThat(film.isDirty(), is(false));
     assertThat(film.getFilmId(), is(FAKE_ID));
     assertThat(film.getTitle(), is(FAKE_TITLE));
+    assertThat(film.getDirector(), is(FAKE_DIRECTOR));
     assertThat(film.getEpisode(), is(Integer.parseInt(FAKE_EPISODE)));
     assertThat(film.getOpeningCrawl(), is(FAKE_CRAWL));
     assertThat(film.getProducer(), is(FAKE_PRODUCER));
@@ -70,9 +64,7 @@ public class FilmApiMapperTest extends ApplicationTestCase {
     List<FilmApiModel> filmApiModelList = new ArrayList<>(2);
     filmApiModelList.add(mockFilmApiModelOne);
     filmApiModelList.add(mockFilmApiModelTwo);
-    ListApiModel<FilmApiModel> filmApiModelListApiModel =
-        new ListApiModel<>(2, null, null, filmApiModelList);
-    Collection<Film> userCollection = filmApiMapper.transform(filmApiModelListApiModel);
+    Collection<Film> userCollection = filmApiMapper.transform(filmApiModelList);
 
     assertThat(userCollection.toArray()[0], is(instanceOf(Film.class)));
     assertThat(userCollection.toArray()[1], is(instanceOf(Film.class)));

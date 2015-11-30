@@ -30,6 +30,20 @@ public class Planet extends Item {
     this.residents = residents;
   }
 
+  public Planet(String planetId) {
+    super();
+
+    this.planetId = planetId;
+    this.name = null;
+    this.diameter = 0;
+    this.gravity = 0f;
+    this.population = 0;
+    this.rotationPeriodHours = 0;
+    this.orbitalPeriodDays = 0;
+    this.films = null;
+    this.residents = null;
+  }
+
   public String getPlanetId() {
     return planetId;
   }

@@ -4,34 +4,27 @@ import com.arturogutierrez.swcompanion.data.net.api.model.FilmApiModel;
 import com.arturogutierrez.swcompanion.data.net.api.model.ListApiModel;
 import com.arturogutierrez.swcompanion.domain.model.Film;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javax.inject.Inject;
 
 public class FilmApiMapper extends ApiMapper {
 
-  private final CharacterApiMapper characterApiMapper;
-  private final PlanetApiMapper planetApiMapper;
-  private final SpecieApiMapper specieApiMapper;
-  private final StarshipApiMapper starshipApiMapper;
-  private final VehicleApiMapper vehicleApiMapper;
+  private final DirtyApiMapper dirtyApiMapper;
 
   @Inject
-  public FilmApiMapper(CharacterApiMapper characterApiMapper, PlanetApiMapper planetApiMapper,
-      SpecieApiMapper specieApiMapper, StarshipApiMapper starshipApiMapper,
-      VehicleApiMapper vehicleApiMapper) {
+  public FilmApiMapper(DirtyApiMapper dirtyApiMapper) {
     super();
 
-    this.characterApiMapper = characterApiMapper;
-    this.planetApiMapper = planetApiMapper;
-    this.specieApiMapper = specieApiMapper;
-    this.starshipApiMapper = starshipApiMapper;
-    this.vehicleApiMapper = vehicleApiMapper;
+    this.dirtyApiMapper = dirtyApiMapper;
   }
 
   public List<Film> transform(ListApiModel<FilmApiModel> filmApiModelList) {
-    List<Film> films = new ArrayList<>(filmApiModelList.getCount());
-    for (FilmApiModel filmApiModel : filmApiModelList.getResults()) {
+    return transform(filmApiModelList.getResults());
+  }
+
+  public List<Film> transform(List<FilmApiModel> filmApiModelList) {
+    List<Film> films = new ArrayList<>(filmApiModelList.size());
+    for (FilmApiModel filmApiModel : filmApiModelList) {
       Film film = transform(filmApiModel);
       films.add(film);
     }
@@ -42,25 +35,17 @@ public class FilmApiMapper extends ApiMapper {
     Film film = null;
     if (filmApiModel != null) {
       String filmId = extractId(filmApiModel.getUrl());
-      // TODO: Map dependencies
-      film = new Film(filmId, filmApiModel.getTitle(), getEpisodeNumber(filmApiModel.getEpisode()),
-          filmApiModel.getOpeningCrawl(), filmApiModel.getProducer(), filmApiModel.getReleaseDate(),
-          characterApiMapper.transform(filmApiModel.getCharacters()),
-          planetApiMapper.transform(filmApiModel.getPlanets()),
-          specieApiMapper.transform(filmApiModel.getSpecies()),
-          starshipApiMapper.transform(filmApiModel.getStarships()),
-          vehicleApiMapper.transform(filmApiModel.getVehicles()), false,
+      film = new Film(filmId, filmApiModel.getTitle(), filmApiModel.getDirector(),
+          intForText(filmApiModel.getEpisode()), filmApiModel.getOpeningCrawl(),
+          filmApiModel.getProducer(), filmApiModel.getReleaseDate(),
+          dirtyApiMapper.transformEmptyPeople(filmApiModel.getCharacters()),
+          dirtyApiMapper.transformEmptyPlanets(filmApiModel.getPlanets()),
+          dirtyApiMapper.transformEmptySpecies(filmApiModel.getSpecies()),
+          dirtyApiMapper.transformEmptyStarships(filmApiModel.getStarships()),
+          dirtyApiMapper.transformEmptyVechicles(filmApiModel.getVehicles()), false,
           getTimeFromDate(filmApiModel.getUpdatedAt()),
           getTimeFromDate(filmApiModel.getCreatedAt()));
     }
     return film;
-  }
-
-  private int getEpisodeNumber(String episode) {
-    try {
-      return Integer.parseInt(episode);
-    } catch (NumberFormatException nfe) {
-      return 0;
-    }
   }
 }

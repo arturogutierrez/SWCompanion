@@ -22,6 +22,23 @@ public class PeopleApiModel {
   List<String> starships;
   List<String> vehicles;
 
+  public PeopleApiModel(String name, String gender, String height, String mass, String homeworld,
+      String url, Date createdAt, Date updatedAt, List<String> films, List<String> species,
+      List<String> starships, List<String> vehicles) {
+    this.name = name;
+    this.gender = gender;
+    this.height = height;
+    this.mass = mass;
+    this.homeworld = homeworld;
+    this.url = url;
+    this.createdAt = createdAt;
+    this.updatedAt = updatedAt;
+    this.films = films;
+    this.species = species;
+    this.starships = starships;
+    this.vehicles = vehicles;
+  }
+
   public String getName() {
     return name;
   }
