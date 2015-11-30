@@ -32,9 +32,10 @@ ext {
   retrofitVersion = '1.6.0'
 
   // Testing
-  robolectricVersion = '2.4'
+  robolectricVersion = '3.0'
   jUnitVersion = '4.12'
-  mockitoVersion = '1.10.19'
+  assertJVersion = '1.7.1'
+  mockitoVersion = '1.9.5'
 
 
   presentationDependencies = [daggerCompiler    : "com.google.dagger:dagger-compiler:${daggerVersion}",
@@ -54,7 +55,7 @@ ext {
   domainDependencies = [daggerCompiler : "com.google.dagger:dagger-compiler:${daggerVersion}",
                         dagger         : "com.google.dagger:dagger:${daggerVersion}",
                         javaxAnnotation: "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
-                        rxJava         : "io.reactivex:rxjava:${rxJavaVersion}",]
+                        rxJava         : "io.reactivex:rxjava:${rxJavaVersion}"]
 
   domainTestDependencies = [junit  : "junit:junit:${jUnitVersion}",
                             mockito: "org.mockito:mockito-core:${mockitoVersion}",]
@@ -68,4 +69,12 @@ ext {
                       realm             : "io.realm:realm-android:${realmVersion}",
                       gson              : "com.google.code.gson:gson:${gsonVersion}",
                       retrofit          : "com.squareup.retrofit:retrofit:${retrofitVersion}"]
+
+  dataTestDependencies = [
+      junit:              "junit:junit:${jUnitVersion}",
+      assertj:            "org.assertj:assertj-core:${assertJVersion}",
+      mockito:            "org.mockito:mockito-core:${mockitoVersion}",
+      robolectric:        "org.robolectric:robolectric:${robolectricVersion}",
+  ]
+
 }

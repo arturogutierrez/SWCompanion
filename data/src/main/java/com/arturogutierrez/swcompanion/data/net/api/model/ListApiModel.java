@@ -9,6 +9,13 @@ public class ListApiModel<T> {
   String previous;
   List<T> results;
 
+  public ListApiModel(int count, String next, String previous, List<T> results) {
+    this.count = count;
+    this.next = next;
+    this.previous = previous;
+    this.results = results;
+  }
+
   public int getCount() {
     return count;
   }

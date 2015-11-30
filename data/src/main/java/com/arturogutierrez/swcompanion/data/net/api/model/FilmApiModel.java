@@ -27,6 +27,26 @@ public class FilmApiModel {
   List<String> starships;
   List<String> vehicles;
 
+  public FilmApiModel(String title, String director, String episode, String openingCrawl,
+      String producer, Date releaseDate, String url, Date createdAt, Date updatedAt,
+      List<String> characters, List<String> planets, List<String> species, List<String> starships,
+      List<String> vehicles) {
+    this.title = title;
+    this.director = director;
+    this.episode = episode;
+    this.openingCrawl = openingCrawl;
+    this.producer = producer;
+    this.releaseDate = releaseDate;
+    this.url = url;
+    this.createdAt = createdAt;
+    this.updatedAt = updatedAt;
+    this.characters = characters;
+    this.planets = planets;
+    this.species = species;
+    this.starships = starships;
+    this.vehicles = vehicles;
+  }
+
   public String getTitle() {
     return title;
   }
