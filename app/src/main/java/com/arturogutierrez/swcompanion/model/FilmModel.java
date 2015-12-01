@@ -7,6 +7,7 @@ public class FilmModel extends ItemModel {
 
   private final String filmId;
   private final String title;
+  private final String director;
   private final int episode;
   private final String openingCrawl;
   private final String producer;
@@ -17,14 +18,15 @@ public class FilmModel extends ItemModel {
   private final List<StarshipModel> starships;
   private final List<VehicleModel> vehicles;
 
-  public FilmModel(String filmId, String title, int episode, String openingCrawl, String producer,
-      Date releaseDate, List<PeopleModel> characters, List<PlanetModel> planets,
+  public FilmModel(String filmId, String title, String director, int episode, String openingCrawl,
+      String producer, Date releaseDate, List<PeopleModel> characters, List<PlanetModel> planets,
       List<SpecieModel> species, List<StarshipModel> starships, List<VehicleModel> vehicles,
       boolean dirty, long updatedAt, long createdAt) {
     super(dirty, updatedAt, createdAt);
 
     this.filmId = filmId;
     this.title = title;
+    this.director = director;
     this.episode = episode;
     this.openingCrawl = openingCrawl;
     this.producer = producer;
@@ -42,6 +44,10 @@ public class FilmModel extends ItemModel {
 
   public String getTitle() {
     return title;
+  }
+
+  public String getDirector() {
+    return director;
   }
 
   public int getEpisode() {

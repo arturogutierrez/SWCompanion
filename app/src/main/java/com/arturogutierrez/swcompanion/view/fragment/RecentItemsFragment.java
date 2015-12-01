@@ -1,18 +1,30 @@
 package com.arturogutierrez.swcompanion.view.fragment;
 
 import android.os.Bundle;
-import android.util.Log;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import com.arturogutierrez.swcompanion.R;
 import com.arturogutierrez.swcompanion.di.component.RecentItemsComponent;
 import com.arturogutierrez.swcompanion.model.ItemModel;
 import com.arturogutierrez.swcompanion.presenter.RecentItemsPresenter;
 import com.arturogutierrez.swcompanion.view.RecentItemsView;
+import com.arturogutierrez.swcompanion.view.adapter.ItemPreviewsAdapter;
 import java.util.List;
 import javax.inject.Inject;
 
-public class RecentItemsFragment extends BaseFragment implements RecentItemsView {
+public class RecentItemsFragment extends ItemListFragment implements RecentItemsView {
 
   @Inject
   RecentItemsPresenter recentItemsPresenter;
+
+  private ItemPreviewsAdapter itemsAdapter;
 
   public RecentItemsFragment() {
     super();
@@ -61,19 +73,12 @@ public class RecentItemsFragment extends BaseFragment implements RecentItemsView
   }
 
   @Override
-  public void showLoading() {
-
-  }
-
-  @Override
-  public void hideLoading() {
-
-  }
-
-  @Override
   public void renderRecentItems(List<ItemModel> items) {
-    Log.d("TAG", "" + items.size());
-    // TODO: Render items
+    if (itemsAdapter == null) {
+      itemsAdapter = new ItemPreviewsAdapter(getContext(), items);
+    }
+
+    rvRecentItems.setAdapter(itemsAdapter);
   }
 
   @Override

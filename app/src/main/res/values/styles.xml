@@ -11,7 +11,7 @@
     <item name="colorAccent">@color/colorAccent</item>
     <item name="colorControlNormal">@color/colorSecondaryText</item>
 
-    <item name="android:textColorPrimary">@android:color/white</item>
+    <item name="android:textColorPrimary">@android:color/black</item>
 
   </style>
 
@@ -32,5 +32,26 @@
     <item name="android:textColorPrimary">@android:color/white</item>
   </style>
 
+  <style name="Toolbar.TabLayout" parent="ToolbarBase">
+    <item name="tabIndicatorColor">?attr/colorPrimaryDark</item>
+  </style>
+
+  <!-- Progress loading spinner -->
+  <style name="AppTheme.ProgressBar">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_centerInParent">true</item>
+    <item name="android:layout_gravity">center</item>
+    <item name="android:visibility">visible</item>
+  </style>
+  <!-- Film Card View -->
+  <style name="PreviewCard.Title" parent="TextAppearance.AppCompat.Headline">
+  </style>
+  <style name="PreviewCard.Episode" parent="TextAppearance.AppCompat.Body1">
+  </style>
+  <style name="PreviewCard.Director" parent="TextAppearance.AppCompat.Body2">
+  </style>
+  <style name="PreviewCard.ReleaseDate" parent="TextAppearance.AppCompat.Body2">
+  </style>
 
 </resources>

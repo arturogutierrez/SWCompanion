@@ -63,9 +63,8 @@ public class RecentItemsPresenter extends DefaultSubscriber<List<Item>> implemen
 
   @Override
   public void onNext(List<Item> recentItems) {
-    // TODO: Convert to app model
-    List<ItemModel> recentItemsModel = itemModelMapper.transform(recentItems);
-    recentItemsView.renderRecentItems(recentItemsModel);
+    List<ItemModel> itemModelList = itemModelMapper.transform(recentItems);
+    recentItemsView.renderRecentItems(itemModelList);
   }
 
   private void showLoading() {

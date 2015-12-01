@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:background="@android:color/white"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    card_view:cardCornerRadius="4dp"
+    card_view:cardElevation="2dp"
+    >
+
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical"
+      android:padding="10dp"
+      >
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/PreviewCard.Title"
+        />
+
+    <TextView
+        android:id="@+id/tv_episode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_title"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        style="@style/PreviewCard.Episode"
+        />
+
+    <TextView
+        android:id="@+id/tv_director"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_title"
+        android:layout_toRightOf="@id/tv_episode"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="15dp"
+        style="@style/PreviewCard.Director"
+        />
+
+    <TextView
+        android:id="@+id/tv_release_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_episode"
+        android:layout_marginTop="5dp"
+        android:layout_centerHorizontal="true"
+        style="@style/PreviewCard.ReleaseDate"
+        />
+
+  </RelativeLayout>
+
+</android.support.v7.widget.CardView>

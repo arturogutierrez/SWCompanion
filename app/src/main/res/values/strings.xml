@@ -2,4 +2,8 @@
   <string name="app_name">SW Companion</string>
   <string name="drawer_open">open</string>
   <string name="drawer_close">close</string>
+
+  <!-- Films -->
+  <string name="episode">Episode %d</string>
+  <string name="recent_items">Recent Items</string>
 </resources>

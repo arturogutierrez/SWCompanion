@@ -1,16 +1,25 @@
 package com.arturogutierrez.swcompanion.view.activity;
 
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import com.arturogutierrez.swcompanion.R;
 import com.arturogutierrez.swcompanion.di.HasComponent;
 import com.arturogutierrez.swcompanion.di.component.DaggerRecentItemsComponent;
 import com.arturogutierrez.swcompanion.di.component.RecentItemsComponent;
 import com.arturogutierrez.swcompanion.di.module.RecentItemsModule;
-import com.arturogutierrez.swcompanion.view.fragment.RecentItemsFragment;
+import com.arturogutierrez.swcompanion.view.adapter.MainFragmentPageAdapter;
 
 public class MainActivity extends BaseActivity implements HasComponent<RecentItemsComponent> {
 
   private RecentItemsComponent recentItemsComponent;
+
+  @Bind(R.id.tab_layout)
+  TabLayout tabLayout;
+  @Bind(R.id.view_pager)
+  ViewPager viewPager;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +41,7 @@ public class MainActivity extends BaseActivity implements HasComponent<RecentIte
   private void initializeActivity(Bundle savedInstanceState) {
     if (savedInstanceState == null) {
       configureInjector();
-      configureMainFragment();
+      configureViewPager();
     }
   }
 
@@ -43,10 +52,13 @@ public class MainActivity extends BaseActivity implements HasComponent<RecentIte
         .recentItemsModule(new RecentItemsModule())
         .build();
     recentItemsComponent.inject(this);
+    ButterKnife.bind(this);
   }
 
-  private void configureMainFragment() {
-    RecentItemsFragment recentItemsFragment = new RecentItemsFragment();
-    addFragment(R.id.content_frame, recentItemsFragment);
+  private void configureViewPager() {
+    MainFragmentPageAdapter fragmentPageAdapter =
+        new MainFragmentPageAdapter(this, getSupportFragmentManager());
+    viewPager.setAdapter(fragmentPageAdapter);
+    tabLayout.setupWithViewPager(viewPager);
   }
 }
