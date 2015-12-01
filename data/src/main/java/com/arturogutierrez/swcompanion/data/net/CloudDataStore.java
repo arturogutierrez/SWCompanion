@@ -26,7 +26,7 @@ public class CloudDataStore implements SWDataStore {
   }
 
   @Override
-  public Observable<Film> getFilm(int filmId) {
+  public Observable<Film> getFilm(String filmId) {
     return restApi.getFilm(filmId).map(filmApiMapper::transform);
   }
 }

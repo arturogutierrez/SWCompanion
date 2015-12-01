@@ -13,7 +13,7 @@ public class SWRestApiFactory {
     RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint(SWRestApi.API_BASE_URL)
         .setRequestInterceptor(createRequestInterceptor())
         .setConverter(createGsonConverter())
-        .setLogLevel(RestAdapter.LogLevel.FULL)
+        .setLogLevel(RestAdapter.LogLevel.BASIC)
         .build();
 
     return restAdapter.create(SWRestApi.class);

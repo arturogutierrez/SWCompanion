@@ -20,12 +20,22 @@ public class SWRepositoryImpl implements SWRepository {
   @Override
   public Observable<List<Film>> getFilms(int page) {
     SWDataStore cloudDataStore = dataStoreFactory.createCloudStore();
-    // TODO: Concat and first from cloud and disk
-    return cloudDataStore.getFilms(page);
+    SWDataStore diskDataStore = dataStoreFactory.createDiskStore();
+
+    Observable<List<Film>> cloudObservable = cloudDataStore.getFilms(page);
+    Observable<List<Film>> diskObservable = diskDataStore.getFilms(page);
+
+    return Observable.concat(diskObservable, cloudObservable).first();
   }
 
   @Override
-  public Observable<Film> getFilm(int filmId) {
-    return null;
+  public Observable<Film> getFilm(String filmId) {
+    SWDataStore cloudDataStore = dataStoreFactory.createCloudStore();
+    SWDataStore diskDataStore = dataStoreFactory.createDiskStore();
+
+    Observable<Film> cloudObservable = cloudDataStore.getFilm(filmId);
+    Observable<Film> diskObservable = diskDataStore.getFilm(filmId);
+
+    return Observable.concat(diskObservable, cloudObservable).first();
   }
 }

@@ -8,5 +8,5 @@ public interface SWDataStore {
 
   Observable<List<Film>> getFilms(int page);
 
-  Observable<Film> getFilm(int filmId);
+  Observable<Film> getFilm(String filmId);
 }

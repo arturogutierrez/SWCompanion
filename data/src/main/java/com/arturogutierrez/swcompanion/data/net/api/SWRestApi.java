@@ -20,36 +20,36 @@ public interface SWRestApi {
   Observable<ListApiModel<FilmApiModel>> getFilms(@Query("page") int page);
 
   @GET("/films/{id}/")
-  Observable<FilmApiModel> getFilm(@Path("id") int filmId);
+  Observable<FilmApiModel> getFilm(@Path("id") String filmId);
 
   @GET("/people/")
   Observable<ListApiModel<PeopleApiModel>> getAllPeople(@Query("page") int page);
 
   @GET("/people/{id}/")
-  Observable<PeopleApiModel> getPeople(@Path("id") int peopleId);
+  Observable<PeopleApiModel> getPeople(@Path("id") String peopleId);
 
   @GET("/starships/")
   Observable<ListApiModel<StarshipApiModel>> getStarships(@Query("page") int page);
 
   @GET("/starships/{id}/")
-  Observable<StarshipApiModel> getStarship(@Path("id") int starshipId);
+  Observable<StarshipApiModel> getStarship(@Path("id") String starshipId);
 
   @GET("/vehicles/")
   Observable<ListApiModel<VehicleApiModel>> getVehicles(@Query("page") int page);
 
   @GET("/vehicles/{id}/")
-  Observable<VehicleApiModel> getVechicle(@Path("id") int vehicleId);
+  Observable<VehicleApiModel> getVechicle(@Path("id") String vehicleId);
 
   @GET("/species/")
   Observable<ListApiModel<SpecieApiModel>> getSpecies(@Query("page") int page);
 
   @GET("/species/{id}/")
-  Observable<SpecieApiModel> getSpecie(@Path("id") int specieId);
+  Observable<SpecieApiModel> getSpecie(@Path("id") String specieId);
 
   @GET("/planets/")
   Observable<ListApiModel<PlanetApiModel>> getPlanets(@Query("page") int page);
 
   @GET("/planets/{id}/")
-  Observable<PlanetApiModel> getPlanet(@Path("id") int planetId);
+  Observable<PlanetApiModel> getPlanet(@Path("id") String planetId);
 }
 
