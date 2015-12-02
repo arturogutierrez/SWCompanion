@@ -34,7 +34,7 @@ public class PeopleApiMapperTest extends ApplicationTestCase {
   }
 
   @Test
-  public void testTransformCharacterApiModel() {
+  public void testTransformPeopleApiModel() {
     PeopleApiModel peopleApiModel = createFakePeopleApiModel();
     People people = peopleApiMapper.transform(peopleApiModel);
 

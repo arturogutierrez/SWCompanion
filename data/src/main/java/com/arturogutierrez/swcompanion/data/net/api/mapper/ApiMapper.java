@@ -40,4 +40,20 @@ public abstract class ApiMapper {
       return 0;
     }
   }
+
+  protected float floatForText(String text) {
+    try {
+      return Float.parseFloat(text);
+    } catch (NumberFormatException nfe) {
+      return 0;
+    }
+  }
+
+  protected long longForText(String text) {
+    try {
+      return Long.parseLong(text);
+    } catch (NumberFormatException nfe) {
+      return 0;
+    }
+  }
 }

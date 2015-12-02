@@ -23,6 +23,22 @@ public class PlanetApiModel {
   List<String> films;
   List<String> residents;
 
+  public PlanetApiModel(String name, String diameter, String gravity, String population, String url,
+      String rotationPeriodHours, String orbitalPeriodDays, Date createdAt, Date updatedAt,
+      List<String> films, List<String> residents) {
+    this.name = name;
+    this.diameter = diameter;
+    this.gravity = gravity;
+    this.population = population;
+    this.url = url;
+    this.rotationPeriodHours = rotationPeriodHours;
+    this.orbitalPeriodDays = orbitalPeriodDays;
+    this.createdAt = createdAt;
+    this.updatedAt = updatedAt;
+    this.films = films;
+    this.residents = residents;
+  }
+
   public String getName() {
     return name;
   }
