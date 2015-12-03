@@ -30,6 +30,27 @@ public class SpecieApiModel {
   List<String> films;
   List<String> people;
 
+  public SpecieApiModel(String name, String classification, String designation,
+      String averageHeight, String averageLifespan, String eyeColors, String hairColors,
+      String skinColors, String language, String homeworld, String url, Date createdAt,
+      Date updatedAt, List<String> films, List<String> people) {
+    this.name = name;
+    this.classification = classification;
+    this.designation = designation;
+    this.averageHeight = averageHeight;
+    this.averageLifespan = averageLifespan;
+    this.eyeColors = eyeColors;
+    this.hairColors = hairColors;
+    this.skinColors = skinColors;
+    this.language = language;
+    this.homeworld = homeworld;
+    this.url = url;
+    this.createdAt = createdAt;
+    this.updatedAt = updatedAt;
+    this.films = films;
+    this.people = people;
+  }
+
   public String getName() {
     return name;
   }

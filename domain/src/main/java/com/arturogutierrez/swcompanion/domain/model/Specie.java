@@ -14,13 +14,13 @@ public class Specie extends Item {
   private final String hairColors;
   private final String skinColors;
   private final String language;
-  private final String homeworld;
+  private final Planet homeworld;
   private final List<Film> films;
   private final List<People> people;
 
   public Specie(String specieId, String name, String classification, String designation,
       float averageHeight, int averageLifespan, String eyeColors, String hairColors,
-      String skinColors, String language, String homeworld, List<Film> films, List<People> people,
+      String skinColors, String language, Planet homeworld, List<Film> films, List<People> people,
       boolean dirty, long updatedAt, long createdAt) {
     super(dirty, updatedAt, createdAt);
 
@@ -97,7 +97,7 @@ public class Specie extends Item {
     return language;
   }
 
-  public String getHomeworld() {
+  public Planet getHomeworld() {
     return homeworld;
   }
 
