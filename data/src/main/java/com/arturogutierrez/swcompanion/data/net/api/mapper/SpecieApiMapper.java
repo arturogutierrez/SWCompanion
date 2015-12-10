@@ -15,7 +15,7 @@ public class SpecieApiMapper extends ApiMapper {
     this.dirtyApiMapper = dirtyApiMapper;
   }
 
-  public Specie transform(SpecieApiModel specieApiModel) {
+  public Specie transform(SpecieApiModel specieApiModel, String mediaURL) {
     String specieId = extractId(specieApiModel.getUrl());
     return new Specie(specieId, specieApiModel.getName(), specieApiModel.getClassification(),
         specieApiModel.getDesignation(), floatForText(specieApiModel.getAverageHeight()),
@@ -24,7 +24,7 @@ public class SpecieApiMapper extends ApiMapper {
         specieApiModel.getLanguage(),
         dirtyApiMapper.transformEmptyPlanet(specieApiModel.getHomeworld()),
         dirtyApiMapper.transformEmptyFilms(specieApiModel.getFilms()),
-        dirtyApiMapper.transformEmptyPeople(specieApiModel.getPeople()), false,
+        dirtyApiMapper.transformEmptyPeople(specieApiModel.getPeople()), mediaURL, false,
         getTimeFromDate(specieApiModel.getUpdatedAt()),
         getTimeFromDate(specieApiModel.getCreatedAt()));
   }

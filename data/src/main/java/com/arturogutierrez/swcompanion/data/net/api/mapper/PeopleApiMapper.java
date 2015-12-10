@@ -15,7 +15,7 @@ public class PeopleApiMapper extends ApiMapper {
     this.dirtyApiMapper = dirtyApiMapper;
   }
 
-  public People transform(PeopleApiModel peopleApiModel) {
+  public People transform(PeopleApiModel peopleApiModel, String mediaURL) {
     People people = null;
     if (peopleApiModel != null) {
       String peopleId = extractId(peopleApiModel.getUrl());
@@ -25,7 +25,7 @@ public class PeopleApiMapper extends ApiMapper {
           dirtyApiMapper.transformEmptyFilms(peopleApiModel.getFilms()),
           dirtyApiMapper.transformEmptySpecies(peopleApiModel.getSpecies()),
           dirtyApiMapper.transformEmptyStarships(peopleApiModel.getStarships()),
-          dirtyApiMapper.transformEmptyVechicles(peopleApiModel.getVehicles()), false,
+          dirtyApiMapper.transformEmptyVechicles(peopleApiModel.getVehicles()), mediaURL, false,
           getTimeFromDate(peopleApiModel.getUpdatedAt()),
           getTimeFromDate(peopleApiModel.getCreatedAt()));
     }

@@ -32,6 +32,10 @@ public class FilmApiMapper extends ApiMapper {
   }
 
   public Film transform(FilmApiModel filmApiModel) {
+    return transform(filmApiModel, null);
+  }
+
+  public Film transform(FilmApiModel filmApiModel, String mediaURL) {
     Film film = null;
     if (filmApiModel != null) {
       String filmId = extractId(filmApiModel.getUrl());
@@ -42,7 +46,7 @@ public class FilmApiMapper extends ApiMapper {
           dirtyApiMapper.transformEmptyPlanets(filmApiModel.getPlanets()),
           dirtyApiMapper.transformEmptySpecies(filmApiModel.getSpecies()),
           dirtyApiMapper.transformEmptyStarships(filmApiModel.getStarships()),
-          dirtyApiMapper.transformEmptyVechicles(filmApiModel.getVehicles()), false,
+          dirtyApiMapper.transformEmptyVechicles(filmApiModel.getVehicles()), mediaURL, false,
           getTimeFromDate(filmApiModel.getUpdatedAt()),
           getTimeFromDate(filmApiModel.getCreatedAt()));
     }

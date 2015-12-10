@@ -17,8 +17,8 @@ public class People extends Item {
 
   public People(String peopleId, String name, String gender, int height, int mass, Planet homeworld,
       List<Film> films, List<Specie> species, List<Starship> starships, List<Vehicle> vehicles,
-      boolean dirty, long updatedAt, long createdAt) {
-    super(dirty, updatedAt, createdAt);
+      String mediaURL, boolean dirty, long updatedAt, long createdAt) {
+    super(mediaURL, dirty, updatedAt, createdAt);
 
     this.peopleId = peopleId;
     this.name = name;

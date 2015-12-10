@@ -20,9 +20,9 @@ public class Film extends Item {
 
   public Film(String filmId, String title, String director, int episode, String openingCrawl,
       String producer, Date releaseDate, List<People> characters, List<Planet> planets,
-      List<Specie> species, List<Starship> starships, List<Vehicle> vehicles, boolean dirty,
-      long updatedAt, long createdAt) {
-    super(dirty, updatedAt, createdAt);
+      List<Specie> species, List<Starship> starships, List<Vehicle> vehicles, String mediaURL,
+      boolean dirty, long updatedAt, long createdAt) {
+    super(mediaURL, dirty, updatedAt, createdAt);
 
     this.filmId = filmId;
     this.title = title;

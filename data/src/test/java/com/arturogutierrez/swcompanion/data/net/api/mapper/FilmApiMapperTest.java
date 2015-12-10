@@ -41,7 +41,7 @@ public class FilmApiMapperTest extends ApplicationTestCase {
   public void testTransformFilmApiModel() {
     FilmApiModel filmApiModel = createFakeFilmApiModel();
 
-    Film film = filmApiMapper.transform(filmApiModel);
+    Film film = filmApiMapper.transform(filmApiModel, firstImageApiModel.getMediaURL());
 
     assertThat(film, is(instanceOf(Film.class)));
     assertThat(film.isDirty(), is(false));

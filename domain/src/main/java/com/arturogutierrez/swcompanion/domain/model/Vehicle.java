@@ -17,8 +17,8 @@ public class Vehicle extends Item {
 
   public Vehicle(String vehicleId, String name, String model, String vehicleClass,
       String manufacturer, int length, int crewNumber, int passengersNumber, List<Film> films,
-      List<People> pilots, boolean dirty, long updatedAt, long createdAt) {
-    super(dirty, updatedAt, createdAt);
+      List<People> pilots, String mediaURL, boolean dirty, long updatedAt, long createdAt) {
+    super(mediaURL, dirty, updatedAt, createdAt);
 
     this.vehicleId = vehicleId;
     this.name = name;

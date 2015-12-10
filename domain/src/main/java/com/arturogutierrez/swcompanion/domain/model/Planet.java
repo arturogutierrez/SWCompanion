@@ -16,8 +16,8 @@ public class Planet extends Item {
 
   public Planet(String planetId, String name, int diameter, float gravity, long population,
       int rotationPeriodHours, int orbitalPeriodDays, List<Film> films, List<People> residents,
-      boolean dirty, long updatedAt, long createdAt) {
-    super(dirty, updatedAt, createdAt);
+      String mediaURL, boolean dirty, long updatedAt, long createdAt) {
+    super(mediaURL, dirty, updatedAt, createdAt);
 
     this.planetId = planetId;
     this.name = name;

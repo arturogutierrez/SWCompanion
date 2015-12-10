@@ -21,8 +21,8 @@ public class Specie extends Item {
   public Specie(String specieId, String name, String classification, String designation,
       float averageHeight, int averageLifespan, String eyeColors, String hairColors,
       String skinColors, String language, Planet homeworld, List<Film> films, List<People> people,
-      boolean dirty, long updatedAt, long createdAt) {
-    super(dirty, updatedAt, createdAt);
+      String mediaURL, boolean dirty, long updatedAt, long createdAt) {
+    super(mediaURL, dirty, updatedAt, createdAt);
 
     this.specieId = specieId;
     this.name = name;

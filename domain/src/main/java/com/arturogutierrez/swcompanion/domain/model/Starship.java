@@ -18,8 +18,9 @@ public class Starship extends Item {
 
   public Starship(String starshipId, String name, String model, String starshipClass,
       String manufacturer, long costInCredits, int length, int crewNumber, int passengersNumber,
-      List<Film> films, List<People> pilots, boolean dirty, long updatedAt, long createdAt) {
-    super(dirty, updatedAt, createdAt);
+      List<Film> films, List<People> pilots, String mediaURL, boolean dirty, long updatedAt,
+      long createdAt) {
+    super(mediaURL, dirty, updatedAt, createdAt);
 
     this.starshipId = starshipId;
     this.name = name;
