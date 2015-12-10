@@ -12,6 +12,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import com.arturogutierrez.swcompanion.R;
 import com.arturogutierrez.swcompanion.view.LoadDataView;
+import com.arturogutierrez.swcompanion.view.widget.InsetDecoration;
 
 public class ItemListFragment extends BaseFragment implements LoadDataView {
 
@@ -51,5 +52,6 @@ public class ItemListFragment extends BaseFragment implements LoadDataView {
     linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
     rvRecentItems.setLayoutManager(linearLayoutManager);
+    rvRecentItems.addItemDecoration(new InsetDecoration(getContext()));
   }
 }

@@ -1,7 +1,6 @@
 <resources>
 
-  <style name="AppTheme"
-      parent="Theme.AppCompat.Light.NoActionBar">
+  <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
     <item name="windowNoTitle">true</item>
     <item name="windowActionBar">false</item>
 
@@ -23,9 +22,7 @@
     <item name="android:theme">@style/ToolbarTheme</item>
   </style>
 
-  <style name="Toolbar"
-      parent="ToolbarBase">
-  </style>
+  <style name="Toolbar" parent="ToolbarBase"></style>
 
   <style name="ToolbarTheme">
     <item name="colorControlNormal">@android:color/white</item>
@@ -44,14 +41,14 @@
     <item name="android:layout_gravity">center</item>
     <item name="android:visibility">visible</item>
   </style>
+
   <!-- Film Card View -->
-  <style name="PreviewCard.Title" parent="TextAppearance.AppCompat.Headline">
-  </style>
-  <style name="PreviewCard.Episode" parent="TextAppearance.AppCompat.Body1">
-  </style>
-  <style name="PreviewCard.Director" parent="TextAppearance.AppCompat.Body2">
-  </style>
-  <style name="PreviewCard.ReleaseDate" parent="TextAppearance.AppCompat.Body2">
+  <style name="Text"/>
+
+  <style name="Text.Card">
+    <item name="android:textColor">@android:color/white</item>
+    <item name="android:textSize">18sp</item>
+    <item name="android:textAllCaps">true</item>
   </style>
 
 </resources>

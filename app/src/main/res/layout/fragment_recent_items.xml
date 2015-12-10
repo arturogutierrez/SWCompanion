@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/itemListBackgroundColor"
-    >
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/itemListBackgroundColor">
 
   <android.support.v7.widget.RecyclerView
-      android:id="@+id/rv_preview_items"
-      android:scrollbars="none"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:layout_marginLeft="@dimen/activity_horizontal_margin"
-      android:layout_marginRight="@dimen/activity_horizontal_margin"
-      android:layout_marginTop="@dimen/activity_vertical_margin"
-      android:layout_marginBottom="@dimen/activity_vertical_margin"
-      android:overScrollMode="never"
-      />
+    android:id="@+id/rv_preview_items"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:overScrollMode="never"
+    android:scrollbars="none" />
 
-  <include layout="@layout/layout_progress"/>
+  <include layout="@layout/layout_progress" />
 
 </RelativeLayout>
