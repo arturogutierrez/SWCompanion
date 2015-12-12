@@ -11,6 +11,7 @@ public interface BingSearchApi {
   String API_BASE_URL = "https://api.datamarket.azure.com/Bing/Search/v1";
 
   @GET("/Image")
-  Observable<List<BingImageApiModel>> getImages(@Query("Query") String query);
+  Observable<List<BingImageApiModel>> getImages(@Query("Query") String query,
+      @Query("ImageFilters") String imageFilters);
 }
 

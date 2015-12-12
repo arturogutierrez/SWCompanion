@@ -17,9 +17,9 @@ public class PeopleModel extends ItemModel {
 
   public PeopleModel(String peopleId, String name, String gender, int height, int mass,
       PlanetModel homeworld, List<FilmModel> films, List<SpecieModel> species,
-      List<StarshipModel> starships, List<VehicleModel> vehicles, boolean dirty, long updatedAt,
-      long createdAt) {
-    super(dirty, updatedAt, createdAt);
+      List<StarshipModel> starships, List<VehicleModel> vehicles, String mediaURL, boolean dirty,
+      long updatedAt, long createdAt) {
+    super(mediaURL, dirty, updatedAt, createdAt);
 
     this.peopleId = peopleId;
     this.name = name;

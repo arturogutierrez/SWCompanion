@@ -18,9 +18,9 @@ public class StarshipModel extends ItemModel {
 
   public StarshipModel(String starshipId, String name, String model, String starshipClass,
       String manufacturer, long costInCredits, int length, int crewNumber, int passengersNumber,
-      List<FilmModel> films, List<PeopleModel> pilots, boolean dirty, long updatedAt,
-      long createdAt) {
-    super(dirty, updatedAt, createdAt);
+      List<FilmModel> films, List<PeopleModel> pilots, String mediaURL, boolean dirty,
+      long updatedAt, long createdAt) {
+    super(mediaURL, dirty, updatedAt, createdAt);
 
     this.starshipId = starshipId;
     this.name = name;

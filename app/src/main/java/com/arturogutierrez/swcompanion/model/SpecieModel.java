@@ -21,8 +21,8 @@ public class SpecieModel extends ItemModel {
   public SpecieModel(String specieId, String name, String classification, String designation,
       float averageHeight, int averageLifespan, String eyeColors, String hairColors,
       String skinColors, String language, String homeworld, List<FilmModel> films,
-      List<PeopleModel> people, boolean dirty, long updatedAt, long createdAt) {
-    super(dirty, updatedAt, createdAt);
+      List<PeopleModel> people, String mediaURL, boolean dirty, long updatedAt, long createdAt) {
+    super(mediaURL, dirty, updatedAt, createdAt);
 
     this.specieId = specieId;
     this.name = name;

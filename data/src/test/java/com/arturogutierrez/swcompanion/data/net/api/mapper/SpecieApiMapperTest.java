@@ -42,7 +42,7 @@ public class SpecieApiMapperTest extends ApplicationTestCase {
   @Test
   public void testTransformSpecieApiModel() {
     SpecieApiModel specieApiModel = createFakeSpecieApiModel();
-    Specie specie = specieApiMapper.transform(specieApiModel);
+    Specie specie = specieApiMapper.transform(specieApiModel, null);
 
     assertThat(specie, is(instanceOf(Specie.class)));
     assertThat(specie.isDirty(), is(false));

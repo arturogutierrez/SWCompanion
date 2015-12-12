@@ -16,8 +16,8 @@ public class PlanetModel extends ItemModel {
 
   public PlanetModel(String planetId, String name, int diameter, float gravity, long population,
       int rotationPeriodHours, int orbitalPeriodDays, List<FilmModel> films,
-      List<PeopleModel> residents, boolean dirty, long updatedAt, long createdAt) {
-    super(dirty, updatedAt, createdAt);
+      List<PeopleModel> residents, String mediaURL, boolean dirty, long updatedAt, long createdAt) {
+    super(mediaURL, dirty, updatedAt, createdAt);
 
     this.planetId = planetId;
     this.name = name;

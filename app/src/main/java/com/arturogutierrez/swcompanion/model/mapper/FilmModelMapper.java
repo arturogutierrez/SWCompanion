@@ -17,7 +17,8 @@ public class FilmModelMapper {
       filmModel =
           new FilmModel(film.getFilmId(), film.getTitle(), film.getDirector(), film.getEpisode(),
               film.getOpeningCrawl(), film.getProducer(), film.getReleaseDate(), null, null, null,
-              null, null, film.isDirty(), film.getUpdatedAt(), film.getCreatedAt());
+              null, null, film.getMediaURL(), film.isDirty(), film.getUpdatedAt(),
+              film.getCreatedAt());
     }
     return filmModel;
   }

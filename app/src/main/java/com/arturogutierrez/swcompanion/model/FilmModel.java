@@ -21,8 +21,8 @@ public class FilmModel extends ItemModel {
   public FilmModel(String filmId, String title, String director, int episode, String openingCrawl,
       String producer, Date releaseDate, List<PeopleModel> characters, List<PlanetModel> planets,
       List<SpecieModel> species, List<StarshipModel> starships, List<VehicleModel> vehicles,
-      boolean dirty, long updatedAt, long createdAt) {
-    super(dirty, updatedAt, createdAt);
+      String mediaURL, boolean dirty, long updatedAt, long createdAt) {
+    super(mediaURL, dirty, updatedAt, createdAt);
 
     this.filmId = filmId;
     this.title = title;

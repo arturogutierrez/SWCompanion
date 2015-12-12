@@ -50,8 +50,8 @@ dependencies {
   compile presentationDependencies.recyclerView
   compile presentationDependencies.cardView
   compile presentationDependencies.butterKnife
-  compile presentationDependencies.picasso
   compile presentationDependencies.expandableSelector
+  compile presentationDependencies.glide
 
   apt presentationDependencies.daggerCompiler
   compile presentationDependencies.dagger

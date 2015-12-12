@@ -36,7 +36,7 @@ public class PeopleApiMapperTest extends ApplicationTestCase {
   @Test
   public void testTransformPeopleApiModel() {
     PeopleApiModel peopleApiModel = createFakePeopleApiModel();
-    People people = peopleApiMapper.transform(peopleApiModel);
+    People people = peopleApiMapper.transform(peopleApiModel, null);
 
     assertThat(people, is(instanceOf(People.class)));
     assertThat(people.isDirty(), is(false));

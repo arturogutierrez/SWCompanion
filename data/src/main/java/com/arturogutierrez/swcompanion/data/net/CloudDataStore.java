@@ -36,13 +36,15 @@ public class CloudDataStore implements SWDataStore {
     Observable<FilmApiModel> filmObservable = restApi.getFilm(filmId);
     return filmObservable.flatMap(filmApiModel -> {
       String query = "'star wars " + filmApiModel.getTitle() + " poster'";
-      Observable<List<BingImageApiModel>> imageApiModelObservable = bingSearchApi.getImages(query);
+      String imageFilter = "'Aspect:Wide'";
+      Observable<List<BingImageApiModel>> imageApiModelObservable =
+          bingSearchApi.getImages(query, imageFilter);
 
-      return Observable.zip(imageApiModelObservable, Observable.just(filmApiModel),
-          (bingImageApiModels, previousFilmApiModel) -> {
-            BingImageApiModel firstImageApiModel = bingImageApiModels.get(0);
-            return filmApiMapper.transform(previousFilmApiModel, firstImageApiModel.getMediaURL());
-          });
+      return imageApiModelObservable.flatMap(bingImageApiModels -> {
+        BingImageApiModel firstImageApiModel = bingImageApiModels.get(0);
+        Film film = filmApiMapper.transform(filmApiModel, firstImageApiModel.getMediaURL());
+        return Observable.just(film);
+      });
     });
   }
 }

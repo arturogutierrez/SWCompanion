@@ -37,7 +37,7 @@ public class ItemPreviewsAdapter extends RecyclerView.Adapter<PreviewItemViewHol
     ItemModel itemModel = itemModelList.get(position);
     // TODO: Check type correctly
     FilmPreviewViewHolder filmPreviewViewHolder = (FilmPreviewViewHolder) holder;
-    filmPreviewViewHolder.showFilm((FilmModel) itemModel);
+    filmPreviewViewHolder.showFilm(context, (FilmModel) itemModel);
   }
 
   @Override

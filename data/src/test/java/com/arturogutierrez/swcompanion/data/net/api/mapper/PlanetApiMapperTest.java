@@ -36,7 +36,7 @@ public class PlanetApiMapperTest extends ApplicationTestCase {
   @Test
   public void testTransformPeopleApiModel() {
     PlanetApiModel planetApiModel = createFakePlanetApiModel();
-    Planet planet = planetApiMapper.transform(planetApiModel);
+    Planet planet = planetApiMapper.transform(planetApiModel, null);
 
     assertThat(planet, is(instanceOf(Planet.class)));
     assertThat(planet.isDirty(), is(false));
