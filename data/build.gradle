@@ -25,11 +25,8 @@ android {
   }
 }
 
-def BING_SEARCH_CONSUMER_KEY = '"' + BingSearchConsumerKeyProperty + '"' ?:
-    '"Define Bing Search Consumer key"';
-
 android.buildTypes.each {
-  type -> type.buildConfigField 'String', 'BING_SEARCH_CONSUMER_KEY', BING_SEARCH_CONSUMER_KEY
+  type -> type.buildConfigField 'String', 'BING_SEARCH_CONSUMER_KEY', "\"" + BingSearchConsumerKeyProperty + "\""
 }
 
 dependencies {
@@ -43,6 +40,7 @@ dependencies {
   compile dataDependencies.dagger
   compile dataDependencies.rxJava
   compile dataDependencies.rxAndroid
+  compile dataDependencies.rxJoins
   compile dataDependencies.androidAnnotations
   compile dataDependencies.realm
   compile dataDependencies.gson

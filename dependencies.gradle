@@ -22,6 +22,7 @@ ext {
   daggerVersion = '2.0.2'
   rxJavaVersion = '1.0.14'
   rxAndroidVersion = '1.0.1'
+  rxJoinsVersion = '0.22.0'
   javaxAnnotationVersion = '1.0'
   androidAnnotationsVersion = '22.2.0'
   butterKnifeVersion = '7.0.1'
@@ -30,7 +31,7 @@ ext {
   gsonVersion = '2.4'
   retrofitVersion = '1.9.0'
   okHttpVersion = '2.6.0'
-  glideVersion = "3.6.0";
+  glideVersion = '3.6.0'
 
 
   // Testing
@@ -66,6 +67,7 @@ ext {
                       dagger            : "com.google.dagger:dagger:${daggerVersion}",
                       rxJava            : "io.reactivex:rxjava:${rxJavaVersion}",
                       rxAndroid         : "io.reactivex:rxandroid:${rxAndroidVersion}",
+                      rxJoins           : "io.reactivex:rxjava-joins:${rxJoinsVersion}",
                       javaxAnnotation   : "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
                       androidAnnotations: "com.android.support:support-annotations:${androidAnnotationsVersion}",
                       realm             : "io.realm:realm-android:${realmVersion}",
