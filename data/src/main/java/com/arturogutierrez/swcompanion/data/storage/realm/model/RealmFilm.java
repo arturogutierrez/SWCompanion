@@ -19,6 +19,7 @@ public class RealmFilm extends RealmObject {
   private RealmList<RealmSpecie> species;
   private RealmList<RealmStarship> starships;
   private RealmList<RealmVehicle> vehicles;
+  private String mediaURL;
   private boolean dirty;
   private long updatedAt;
   private long createdAt;
@@ -109,6 +110,14 @@ public class RealmFilm extends RealmObject {
 
   public void setVehicles(RealmList<RealmVehicle> vehicles) {
     this.vehicles = vehicles;
+  }
+
+  public String getMediaURL() {
+    return mediaURL;
+  }
+
+  public void setMediaURL(String mediaURL) {
+    this.mediaURL = mediaURL;
   }
 
   public boolean isDirty() {

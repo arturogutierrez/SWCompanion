@@ -20,7 +20,7 @@ public class SWDataStoreFactory {
     return new CloudDataStore(filmApiMapper);
   }
 
-  public SWDataStore createDiskStore() {
+  public SWLocalDataStore createDiskStore() {
     return new DiskDataStore();
   }
 
