@@ -45,7 +45,7 @@ public class FilmRealmCreator {
       filmRealm.setProducer(film.getProducer());
       filmRealm.setReleaseDate(film.getReleaseDate());
       filmRealm.setMediaURL(film.getMediaURL());
-      filmRealm.setDirty(false);
+      filmRealm.setDirty(film.isDirty());
       filmRealm.setCreatedAt(film.getCreatedAt());
       filmRealm.setUpdatedAt(film.getUpdatedAt());
     }

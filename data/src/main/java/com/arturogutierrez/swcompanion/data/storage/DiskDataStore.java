@@ -1,6 +1,5 @@
 package com.arturogutierrez.swcompanion.data.storage;
 
-import android.content.Context;
 import android.util.Log;
 import com.arturogutierrez.swcompanion.data.repository.datasource.SWLocalDataStore;
 import com.arturogutierrez.swcompanion.data.storage.realm.helpers.FilmRealmCreator;
@@ -15,11 +14,9 @@ import rx.Observer;
 
 public class DiskDataStore implements SWLocalDataStore {
 
-  private final Context context;
   private final FilmRealmMapper filmRealmMapper;
 
-  public DiskDataStore(Context context, FilmRealmMapper filmRealmMapper) {
-    this.context = context;
+  public DiskDataStore(FilmRealmMapper filmRealmMapper) {
     this.filmRealmMapper = filmRealmMapper;
   }
 
@@ -31,7 +28,7 @@ public class DiskDataStore implements SWLocalDataStore {
 
   @Override
   public Observable<Film> getFilm(String filmId) {
-    return RealmObservable.object(context,
+    return RealmObservable.object(
         realm -> realm.where(FilmRealm.class).equalTo("filmId", filmId).findFirst())
         .map(filmRealm -> filmRealmMapper.transform(filmRealm, true));
   }
@@ -40,7 +37,7 @@ public class DiskDataStore implements SWLocalDataStore {
   public void saveFilm(Film film) {
     Log.d(DiskDataStore.class.toString(), "Saving Film to database");
 
-    Realm defaultRealm = Realm.getInstance(context);
+    Realm defaultRealm = Realm.getDefaultInstance();
     defaultRealm.executeTransaction(realm -> {
       FilmRealmCreator filmRealmCreator = new FilmRealmCreator();
       filmRealmCreator.createOrUpdateFilmRealmFromFilm(realm, film);

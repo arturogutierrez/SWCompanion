@@ -26,7 +26,7 @@ public class SWDataStoreFactory {
 
   public SWLocalDataStore createDiskStore() {
     FilmRealmMapper filmRealmMapper = createFilmRealmMapper();
-    return new DiskDataStore(context, filmRealmMapper);
+    return new DiskDataStore(filmRealmMapper);
   }
 
   private FilmApiMapper createFilmApiMapper() {
