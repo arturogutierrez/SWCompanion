@@ -1,4 +1,4 @@
-package com.arturogutierrez.swcompanion.data.storage.realm.helpers;
+package com.arturogutierrez.swcompanion.data.storage.realm.helpers.rx;
 
 import android.content.Context;
 import io.realm.Realm;

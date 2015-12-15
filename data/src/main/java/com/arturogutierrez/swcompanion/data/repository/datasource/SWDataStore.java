@@ -6,7 +6,5 @@ import rx.Observable;
 
 public interface SWDataStore {
 
-  Observable<List<Film>> getFilms(int page);
-
-  Observable<Film> getFilm(String filmId);
+  Observable<List<Film>> getFilms();
 }

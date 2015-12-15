@@ -4,7 +4,7 @@ import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-public class RealmSpecie extends RealmObject {
+public class SpecieRealm extends RealmObject {
 
   @PrimaryKey
   private String specieId;
@@ -18,8 +18,9 @@ public class RealmSpecie extends RealmObject {
   private String skinColors;
   private String language;
   private String homeworld;
-  private RealmList<RealmFilm> films;
-  private RealmList<RealmPeople> people;
+  private RealmList<FilmRealm> films;
+  private RealmList<PeopleRealm> people;
+  private String mediaURL;
   private boolean dirty;
   private long updatedAt;
   private long createdAt;
@@ -112,20 +113,28 @@ public class RealmSpecie extends RealmObject {
     this.homeworld = homeworld;
   }
 
-  public RealmList<RealmFilm> getFilms() {
+  public RealmList<FilmRealm> getFilms() {
     return films;
   }
 
-  public void setFilms(RealmList<RealmFilm> films) {
+  public void setFilms(RealmList<FilmRealm> films) {
     this.films = films;
   }
 
-  public RealmList<RealmPeople> getPeople() {
+  public RealmList<PeopleRealm> getPeople() {
     return people;
   }
 
-  public void setPeople(RealmList<RealmPeople> people) {
+  public void setPeople(RealmList<PeopleRealm> people) {
     this.people = people;
+  }
+
+  public String getMediaURL() {
+    return mediaURL;
+  }
+
+  public void setMediaURL(String mediaURL) {
+    this.mediaURL = mediaURL;
   }
 
   public boolean isDirty() {

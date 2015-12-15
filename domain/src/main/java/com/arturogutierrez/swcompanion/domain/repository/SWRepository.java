@@ -6,7 +6,7 @@ import rx.Observable;
 
 public interface SWRepository {
 
-  Observable<List<Film>> getFilms(int page);
+  Observable<List<Film>> getFilms();
 
   Observable<Film> getFilm(String filmId);
 }

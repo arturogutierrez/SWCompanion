@@ -1,27 +1,25 @@
-package com.arturogutierrez.swcompanion.data.storage.realm.helpers;
+package com.arturogutierrez.swcompanion.data.storage.realm.helpers.rx;
 
 import android.content.Context;
 import io.realm.Realm;
 import io.realm.RealmObject;
-import io.realm.RealmResults;
 import io.realm.exceptions.RealmException;
 import rx.Observable;
 import rx.Subscriber;
 
-public abstract class OnSubscribeRealmResults<T extends RealmObject>
-    implements Observable.OnSubscribe<RealmResults<T>> {
+public abstract class OnSubscribeRealm<T extends RealmObject> implements Observable.OnSubscribe<T> {
 
   private final Context context;
 
-  public OnSubscribeRealmResults(Context context) {
+  public OnSubscribeRealm(Context context) {
     this.context = context;
   }
 
   @Override
-  public void call(Subscriber<? super RealmResults<T>> subscriber) {
+  public void call(Subscriber<? super T> subscriber) {
     final Realm realm = Realm.getInstance(context);
 
-    RealmResults<T> object;
+    T object;
     realm.beginTransaction();
     try {
       object = get(realm);
@@ -36,11 +34,13 @@ public abstract class OnSubscribeRealmResults<T extends RealmObject>
       return;
     }
 
-    subscriber.onNext(object);
+    if (object != null) {
+      subscriber.onNext(object);
+    }
     subscriber.onCompleted();
 
     realm.close();
   }
 
-  public abstract RealmResults<T> get(Realm realm);
+  public abstract T get(Realm realm);
 }

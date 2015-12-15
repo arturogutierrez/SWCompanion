@@ -4,9 +4,9 @@ import com.arturogutierrez.swcompanion.data.net.api.SWRestApi;
 import com.arturogutierrez.swcompanion.data.net.api.SWRestApiFactory;
 import com.arturogutierrez.swcompanion.data.net.api.mapper.FilmApiMapper;
 import com.arturogutierrez.swcompanion.data.net.api.model.FilmApiModel;
+import com.arturogutierrez.swcompanion.data.net.api.model.ListApiModel;
 import com.arturogutierrez.swcompanion.data.net.bing.BingSearchApi;
 import com.arturogutierrez.swcompanion.data.net.bing.BingSearchApiFactory;
-import com.arturogutierrez.swcompanion.data.net.bing.model.BingImageApiModel;
 import com.arturogutierrez.swcompanion.data.repository.datasource.SWDataStore;
 import com.arturogutierrez.swcompanion.domain.model.Film;
 import java.util.List;
@@ -27,24 +27,39 @@ public class CloudDataStore implements SWDataStore {
   }
 
   @Override
-  public Observable<List<Film>> getFilms(int page) {
-    return restApi.getFilms(page).map(filmApiMapper::transform);
+  public Observable<List<Film>> getFilms() {
+    return getAllFilms().flatMap(filmApiModelList -> Observable.from(filmApiModelList.getResults()))
+        .concatMap(this::getFilmWithMedia)
+        .toList();
   }
 
-  @Override
-  public Observable<Film> getFilm(String filmId) {
-    Observable<FilmApiModel> filmObservable = restApi.getFilm(filmId);
-    return filmObservable.flatMap(filmApiModel -> {
-      String query = "'star wars " + filmApiModel.getTitle() + " poster'";
-      String imageFilter = "'Aspect:Wide'";
-      Observable<List<BingImageApiModel>> imageApiModelObservable =
-          bingSearchApi.getImages(query, imageFilter);
+  private Observable<ListApiModel<FilmApiModel>> getAllFilms() {
+    return getFilmsFromPage(SWRestApi.FIRST_PAGE);
+  }
 
-      return imageApiModelObservable.flatMap(bingImageApiModels -> {
-        BingImageApiModel firstImageApiModel = bingImageApiModels.get(0);
-        Film film = filmApiMapper.transform(filmApiModel, firstImageApiModel.getMediaURL());
-        return Observable.just(film);
-      });
+  private Observable<ListApiModel<FilmApiModel>> getFilmsFromPage(int page) {
+    return restApi.getFilms(page).concatMap(filmApiModelList -> {
+      if (filmApiModelList.getNext() == null) {
+        return Observable.just(filmApiModelList);
+      }
+      return Observable.just(filmApiModelList).concatWith(restApi.getFilms(page + 1));
     });
+  }
+
+  private Observable<Film> getFilmWithMedia(FilmApiModel filmApiModel) {
+    // FIXME: Remove this when the storage is finished (to avoid reach Bing limit)
+    /*
+    String query = "'star wars " + filmApiModel.getTitle() + " poster'";
+    String imageFilter = "'Aspect:Wide'";
+    Observable<List<BingImageApiModel>> imageApiModelObservable =
+        bingSearchApi.getImages(query, imageFilter);
+
+    return imageApiModelObservable.flatMap(bingImageApiModels -> {
+      BingImageApiModel firstImageApiModel = bingImageApiModels.get(0);
+      Film film = filmApiMapper.transform(filmApiModel, firstImageApiModel.getMediaURL());
+      return Observable.just(film);
+    });
+    */
+    return Observable.just(filmApiMapper.transform(filmApiModel));
   }
 }

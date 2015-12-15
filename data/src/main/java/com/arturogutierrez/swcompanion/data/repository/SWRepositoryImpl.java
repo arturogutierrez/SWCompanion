@@ -19,12 +19,12 @@ public class SWRepositoryImpl implements SWRepository {
   }
 
   @Override
-  public Observable<List<Film>> getFilms(int page) {
+  public Observable<List<Film>> getFilms() {
     SWDataStore cloudDataStore = dataStoreFactory.createCloudStore();
     SWDataStore diskDataStore = dataStoreFactory.createDiskStore();
 
-    Observable<List<Film>> cloudObservable = cloudDataStore.getFilms(page);
-    Observable<List<Film>> diskObservable = diskDataStore.getFilms(page);
+    Observable<List<Film>> cloudObservable = cloudDataStore.getFilms();
+    Observable<List<Film>> diskObservable = diskDataStore.getFilms();
 
     return Observable.concat(diskObservable, cloudObservable).first();
   }
@@ -35,8 +35,11 @@ public class SWRepositoryImpl implements SWRepository {
     SWLocalDataStore diskDataStore = dataStoreFactory.createDiskStore();
 
     Observable<Film> diskObservable = diskDataStore.getFilm(filmId);
-    Observable<Film> cloudObservable =
-        cloudDataStore.getFilm(filmId).doOnNext(diskDataStore::saveFilm);
+    Observable<Film> cloudObservable = cloudDataStore.getFilms()
+        .flatMap(Observable::from)
+        .doOnNext(diskDataStore::saveFilm)
+        .filter(film -> film.getFilmId().equals(filmId))
+        .first();
 
     return Observable.concat(diskObservable, cloudObservable).first();
   }
