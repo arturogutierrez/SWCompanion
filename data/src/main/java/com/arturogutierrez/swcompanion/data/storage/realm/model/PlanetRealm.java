@@ -4,7 +4,7 @@ import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-public class RealmPlanet extends RealmObject {
+public class PlanetRealm extends RealmObject {
 
   @PrimaryKey
   private String planetId;
@@ -14,8 +14,9 @@ public class RealmPlanet extends RealmObject {
   private long population;
   private int rotationPeriodHours;
   private int orbitalPeriodDays;
-  private RealmList<RealmFilm> films;
-  private RealmList<RealmPeople> residents;
+  private RealmList<FilmRealm> films;
+  private RealmList<PeopleRealm> residents;
+  private String mediaURL;
   private boolean dirty;
   private long updatedAt;
   private long createdAt;
@@ -76,20 +77,28 @@ public class RealmPlanet extends RealmObject {
     this.orbitalPeriodDays = orbitalPeriodDays;
   }
 
-  public RealmList<RealmFilm> getFilms() {
+  public RealmList<FilmRealm> getFilms() {
     return films;
   }
 
-  public void setFilms(RealmList<RealmFilm> films) {
+  public void setFilms(RealmList<FilmRealm> films) {
     this.films = films;
   }
 
-  public RealmList<RealmPeople> getResidents() {
+  public RealmList<PeopleRealm> getResidents() {
     return residents;
   }
 
-  public void setResidents(RealmList<RealmPeople> residents) {
+  public void setResidents(RealmList<PeopleRealm> residents) {
     this.residents = residents;
+  }
+
+  public String getMediaURL() {
+    return mediaURL;
+  }
+
+  public void setMediaURL(String mediaURL) {
+    this.mediaURL = mediaURL;
   }
 
   public boolean isDirty() {

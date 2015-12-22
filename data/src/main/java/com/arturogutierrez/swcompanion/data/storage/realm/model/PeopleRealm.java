@@ -4,7 +4,7 @@ import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-public class RealmPeople extends RealmObject {
+public class PeopleRealm extends RealmObject {
 
   @PrimaryKey
   private String peopleId;
@@ -12,11 +12,12 @@ public class RealmPeople extends RealmObject {
   private String gender;
   private int height;
   private int mass;
-  private RealmPlanet homeworld;
-  private RealmList<RealmFilm> films;
-  private RealmList<RealmSpecie> species;
-  private RealmList<RealmStarship> starships;
-  private RealmList<RealmVehicle> vehicles;
+  private PlanetRealm homeworld;
+  private RealmList<FilmRealm> films;
+  private RealmList<SpecieRealm> species;
+  private RealmList<StarshipRealm> starships;
+  private RealmList<VehicleRealm> vehicles;
+  private String mediaURL;
   private boolean dirty;
   private long updatedAt;
   private long createdAt;
@@ -61,44 +62,52 @@ public class RealmPeople extends RealmObject {
     this.mass = mass;
   }
 
-  public RealmPlanet getHomeworld() {
+  public PlanetRealm getHomeworld() {
     return homeworld;
   }
 
-  public void setHomeworld(RealmPlanet homeworld) {
+  public void setHomeworld(PlanetRealm homeworld) {
     this.homeworld = homeworld;
   }
 
-  public RealmList<RealmFilm> getFilms() {
+  public RealmList<FilmRealm> getFilms() {
     return films;
   }
 
-  public void setFilms(RealmList<RealmFilm> films) {
+  public void setFilms(RealmList<FilmRealm> films) {
     this.films = films;
   }
 
-  public RealmList<RealmSpecie> getSpecies() {
+  public RealmList<SpecieRealm> getSpecies() {
     return species;
   }
 
-  public void setSpecies(RealmList<RealmSpecie> species) {
+  public void setSpecies(RealmList<SpecieRealm> species) {
     this.species = species;
   }
 
-  public RealmList<RealmStarship> getStarships() {
+  public RealmList<StarshipRealm> getStarships() {
     return starships;
   }
 
-  public void setStarships(RealmList<RealmStarship> starships) {
+  public void setStarships(RealmList<StarshipRealm> starships) {
     this.starships = starships;
   }
 
-  public RealmList<RealmVehicle> getVehicles() {
+  public RealmList<VehicleRealm> getVehicles() {
     return vehicles;
   }
 
-  public void setVehicles(RealmList<RealmVehicle> vehicles) {
+  public void setVehicles(RealmList<VehicleRealm> vehicles) {
     this.vehicles = vehicles;
+  }
+
+  public String getMediaURL() {
+    return mediaURL;
+  }
+
+  public void setMediaURL(String mediaURL) {
+    this.mediaURL = mediaURL;
   }
 
   public boolean isDirty() {

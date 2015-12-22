@@ -1,18 +1,22 @@
 package com.arturogutierrez.swcompanion.data.repository.datasource;
 
+import android.content.Context;
 import com.arturogutierrez.swcompanion.data.net.CloudDataStore;
 import com.arturogutierrez.swcompanion.data.net.api.mapper.DirtyApiMapper;
 import com.arturogutierrez.swcompanion.data.net.api.mapper.FilmApiMapper;
 import com.arturogutierrez.swcompanion.data.storage.DiskDataStore;
+import com.arturogutierrez.swcompanion.data.storage.realm.mapper.FilmRealmMapper;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
 @Singleton
 public class SWDataStoreFactory {
 
-  @Inject
-  public SWDataStoreFactory() {
+  private final Context context;
 
+  @Inject
+  public SWDataStoreFactory(Context context) {
+    this.context = context;
   }
 
   public SWDataStore createCloudStore() {
@@ -20,12 +24,17 @@ public class SWDataStoreFactory {
     return new CloudDataStore(filmApiMapper);
   }
 
-  public SWDataStore createDiskStore() {
-    return new DiskDataStore();
+  public SWLocalDataStore createDiskStore() {
+    FilmRealmMapper filmRealmMapper = createFilmRealmMapper();
+    return new DiskDataStore(filmRealmMapper);
   }
 
   private FilmApiMapper createFilmApiMapper() {
     DirtyApiMapper dirtyApiMapper = new DirtyApiMapper();
     return new FilmApiMapper(dirtyApiMapper);
+  }
+
+  private FilmRealmMapper createFilmRealmMapper() {
+    return new FilmRealmMapper();
   }
 }

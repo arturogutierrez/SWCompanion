@@ -1,6 +1,5 @@
-package com.arturogutierrez.swcompanion.data.storage.realm.helpers;
+package com.arturogutierrez.swcompanion.data.storage.realm.helpers.rx;
 
-import android.content.Context;
 import io.realm.Realm;
 import io.realm.RealmObject;
 import io.realm.exceptions.RealmException;
@@ -9,15 +8,12 @@ import rx.Subscriber;
 
 public abstract class OnSubscribeRealm<T extends RealmObject> implements Observable.OnSubscribe<T> {
 
-  private final Context context;
-
-  public OnSubscribeRealm(Context context) {
-    this.context = context;
+  public OnSubscribeRealm() {
   }
 
   @Override
   public void call(Subscriber<? super T> subscriber) {
-    final Realm realm = Realm.getInstance(context);
+    final Realm realm = Realm.getDefaultInstance();
 
     T object;
     realm.beginTransaction();
@@ -34,7 +30,9 @@ public abstract class OnSubscribeRealm<T extends RealmObject> implements Observa
       return;
     }
 
-    subscriber.onNext(object);
+    if (object != null) {
+      subscriber.onNext(object);
+    }
     subscriber.onCompleted();
 
     realm.close();

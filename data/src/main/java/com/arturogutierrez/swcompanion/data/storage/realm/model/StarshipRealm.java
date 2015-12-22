@@ -4,29 +4,31 @@ import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-public class RealmVehicle extends RealmObject {
+public class StarshipRealm extends RealmObject {
 
   @PrimaryKey
-  private String vehicleId;
+  private String starshipId;
   private String name;
   private String model;
-  private String vehicleClass;
+  private String starshipClass;
   private String manufacturer;
+  private long costInCredits;
   private int length;
   private int crewNumber;
   private int passengersNumber;
-  private RealmList<RealmFilm> films;
-  private RealmList<RealmPeople> pilots;
+  private RealmList<FilmRealm> films;
+  private RealmList<PeopleRealm> pilots;
+  private String mediaURL;
   private boolean dirty;
   private long updatedAt;
   private long createdAt;
 
-  public String getVehicleId() {
-    return vehicleId;
+  public String getStarshipId() {
+    return starshipId;
   }
 
-  public void setVehicleId(String vehicleId) {
-    this.vehicleId = vehicleId;
+  public void setStarshipId(String starshipId) {
+    this.starshipId = starshipId;
   }
 
   public String getName() {
@@ -45,12 +47,12 @@ public class RealmVehicle extends RealmObject {
     this.model = model;
   }
 
-  public String getVehicleClass() {
-    return vehicleClass;
+  public String getStarshipClass() {
+    return starshipClass;
   }
 
-  public void setVehicleClass(String vehicleClass) {
-    this.vehicleClass = vehicleClass;
+  public void setStarshipClass(String starshipClass) {
+    this.starshipClass = starshipClass;
   }
 
   public String getManufacturer() {
@@ -59,6 +61,14 @@ public class RealmVehicle extends RealmObject {
 
   public void setManufacturer(String manufacturer) {
     this.manufacturer = manufacturer;
+  }
+
+  public long getCostInCredits() {
+    return costInCredits;
+  }
+
+  public void setCostInCredits(long costInCredits) {
+    this.costInCredits = costInCredits;
   }
 
   public int getLength() {
@@ -85,20 +95,28 @@ public class RealmVehicle extends RealmObject {
     this.passengersNumber = passengersNumber;
   }
 
-  public RealmList<RealmFilm> getFilms() {
+  public RealmList<FilmRealm> getFilms() {
     return films;
   }
 
-  public void setFilms(RealmList<RealmFilm> films) {
+  public void setFilms(RealmList<FilmRealm> films) {
     this.films = films;
   }
 
-  public RealmList<RealmPeople> getPilots() {
+  public RealmList<PeopleRealm> getPilots() {
     return pilots;
   }
 
-  public void setPilots(RealmList<RealmPeople> pilots) {
+  public void setPilots(RealmList<PeopleRealm> pilots) {
     this.pilots = pilots;
+  }
+
+  public String getMediaURL() {
+    return mediaURL;
+  }
+
+  public void setMediaURL(String mediaURL) {
+    this.mediaURL = mediaURL;
   }
 
   public boolean isDirty() {

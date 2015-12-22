@@ -15,6 +15,7 @@ import rx.Observable;
 public interface SWRestApi {
 
   String API_BASE_URL = "http://swapi.co/api";
+  Integer FIRST_PAGE = 1;
 
   @GET("/films/")
   Observable<ListApiModel<FilmApiModel>> getFilms(@Query("page") int page);

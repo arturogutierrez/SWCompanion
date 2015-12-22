@@ -34,6 +34,7 @@ public class RecentItemsInteractor extends Interactor<List<Item>> {
   }
 
   public Observable<List<Item>> getDefaultItemsObservable() {
+
     Observable<Film> lastFilmObservable = swRepository.getFilm("7");
     Observable<Film> firstFilmObservable = swRepository.getFilm("1");
 

@@ -1,10 +1,11 @@
 package com.arturogutierrez.swcompanion.data.repository.datasource;
 
 import com.arturogutierrez.swcompanion.domain.model.Film;
-import java.util.List;
 import rx.Observable;
 
-public interface SWDataStore {
+public interface SWLocalDataStore extends SWDataStore {
 
-  Observable<List<Film>> getFilms();
+  Observable<Film> getFilm(String filmId);
+
+  void saveFilm(Film film);
 }
