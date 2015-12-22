@@ -7,6 +7,7 @@ import com.arturogutierrez.swcompanion.data.net.api.model.FilmApiModel;
 import com.arturogutierrez.swcompanion.data.net.api.model.ListApiModel;
 import com.arturogutierrez.swcompanion.data.net.bing.BingSearchApi;
 import com.arturogutierrez.swcompanion.data.net.bing.BingSearchApiFactory;
+import com.arturogutierrez.swcompanion.data.net.bing.model.BingImageApiModel;
 import com.arturogutierrez.swcompanion.data.repository.datasource.SWDataStore;
 import com.arturogutierrez.swcompanion.domain.model.Film;
 import java.util.List;
@@ -47,8 +48,6 @@ public class CloudDataStore implements SWDataStore {
   }
 
   private Observable<Film> getFilmWithMedia(FilmApiModel filmApiModel) {
-    // FIXME: Remove this when the storage is finished (to avoid reach Bing limit)
-    /*
     String query = "'star wars " + filmApiModel.getTitle() + " poster'";
     String imageFilter = "'Aspect:Wide'";
     Observable<List<BingImageApiModel>> imageApiModelObservable =
@@ -59,7 +58,5 @@ public class CloudDataStore implements SWDataStore {
       Film film = filmApiMapper.transform(filmApiModel, firstImageApiModel.getMediaURL());
       return Observable.just(film);
     });
-    */
-    return Observable.just(filmApiMapper.transform(filmApiModel));
   }
 }

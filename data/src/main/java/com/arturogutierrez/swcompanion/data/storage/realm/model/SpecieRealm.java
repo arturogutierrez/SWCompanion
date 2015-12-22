@@ -17,7 +17,7 @@ public class SpecieRealm extends RealmObject {
   private String hairColors;
   private String skinColors;
   private String language;
-  private String homeworld;
+  private PlanetRealm homeworld;
   private RealmList<FilmRealm> films;
   private RealmList<PeopleRealm> people;
   private String mediaURL;
@@ -105,11 +105,11 @@ public class SpecieRealm extends RealmObject {
     this.language = language;
   }
 
-  public String getHomeworld() {
+  public PlanetRealm getHomeworld() {
     return homeworld;
   }
 
-  public void setHomeworld(String homeworld) {
+  public void setHomeworld(PlanetRealm homeworld) {
     this.homeworld = homeworld;
   }
 
