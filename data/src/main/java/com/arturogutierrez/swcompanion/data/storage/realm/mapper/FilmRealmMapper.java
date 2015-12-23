@@ -7,6 +7,7 @@ import com.arturogutierrez.swcompanion.domain.model.Planet;
 import com.arturogutierrez.swcompanion.domain.model.Specie;
 import com.arturogutierrez.swcompanion.domain.model.Starship;
 import com.arturogutierrez.swcompanion.domain.model.Vehicle;
+import io.realm.RealmResults;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,5 +35,14 @@ public class FilmRealmMapper {
         filmRealm.getReleaseDate(), peopleList, planetList, specieList, starshipList, vehicleList,
         filmRealm.getMediaURL(), filmRealm.isDirty(), filmRealm.getCreatedAt(),
         filmRealm.getCreatedAt());
+  }
+
+  public List<Film> transform(RealmResults<FilmRealm> filmRealms, boolean transformRelationships) {
+    List<Film> films = new ArrayList<>(filmRealms.size());
+    for (FilmRealm filmRealm : filmRealms) {
+      Film film = transform(filmRealm, transformRelationships);
+      films.add(film);
+    }
+    return films;
   }
 }

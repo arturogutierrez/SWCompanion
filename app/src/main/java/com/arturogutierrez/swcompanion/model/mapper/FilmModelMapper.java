@@ -2,6 +2,8 @@ package com.arturogutierrez.swcompanion.model.mapper;
 
 import com.arturogutierrez.swcompanion.domain.model.Film;
 import com.arturogutierrez.swcompanion.model.FilmModel;
+import java.util.ArrayList;
+import java.util.List;
 import javax.inject.Inject;
 
 public class FilmModelMapper {
@@ -21,5 +23,14 @@ public class FilmModelMapper {
               film.getCreatedAt());
     }
     return filmModel;
+  }
+
+  public List<FilmModel> transform(List<Film> filmList) {
+    ArrayList<FilmModel> filmModelList = new ArrayList<>(filmList.size());
+    for (Film film : filmList) {
+      FilmModel filmModel = transform(film);
+      filmModelList.add(filmModel);
+    }
+    return filmModelList;
   }
 }

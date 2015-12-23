@@ -10,7 +10,6 @@ import com.arturogutierrez.swcompanion.domain.model.Film;
 import io.realm.Realm;
 import java.util.List;
 import rx.Observable;
-import rx.Observer;
 
 public class DiskDataStore implements SWLocalDataStore {
 
@@ -22,8 +21,8 @@ public class DiskDataStore implements SWLocalDataStore {
 
   @Override
   public Observable<List<Film>> getFilms() {
-    // TODO: Query to DB
-    return Observable.create(Observer::onCompleted);
+    return RealmObservable.results(realm -> realm.where(FilmRealm.class).findAll())
+        .map(filmRealms -> filmRealmMapper.transform(filmRealms, true));
   }
 
   @Override

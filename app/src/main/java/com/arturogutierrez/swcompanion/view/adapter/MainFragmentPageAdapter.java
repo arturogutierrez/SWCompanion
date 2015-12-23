@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import com.arturogutierrez.swcompanion.R;
-import com.arturogutierrez.swcompanion.view.fragment.RecentItemsFragment;
+import com.arturogutierrez.swcompanion.view.fragment.FilmListFragment;
 
 public class MainFragmentPageAdapter extends FragmentPagerAdapter {
 
@@ -21,7 +21,7 @@ public class MainFragmentPageAdapter extends FragmentPagerAdapter {
   private void initialize(Context context) {
     pageConfiguration = new PageConfiguration[1];
     pageConfiguration[0] =
-        new PageConfiguration(context.getString(R.string.recent_items), RecentItemsFragment.class);
+        new PageConfiguration(context.getString(R.string.films), FilmListFragment.class);
 
     fragmentsCache = new Fragment[1];
   }

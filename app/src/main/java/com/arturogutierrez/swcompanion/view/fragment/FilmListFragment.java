@@ -2,27 +2,29 @@ package com.arturogutierrez.swcompanion.view.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-import com.arturogutierrez.swcompanion.di.component.RecentItemsComponent;
+import com.arturogutierrez.swcompanion.di.component.FilmsComponent;
+import com.arturogutierrez.swcompanion.model.FilmModel;
 import com.arturogutierrez.swcompanion.model.ItemModel;
-import com.arturogutierrez.swcompanion.presenter.RecentItemsPresenter;
-import com.arturogutierrez.swcompanion.view.RecentItemsView;
+import com.arturogutierrez.swcompanion.presenter.FilmListPresenter;
+import com.arturogutierrez.swcompanion.view.FilmListView;
 import com.arturogutierrez.swcompanion.view.adapter.ItemPreviewsAdapter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 
-public class RecentItemsFragment extends ItemListFragment implements RecentItemsView {
+public class FilmListFragment extends ItemListFragment implements FilmListView {
 
-  public interface RecentItemsListener {
-    void showDetails(final ItemModel itemModel);
+  public interface FilmListListener {
+    void showDetails(final FilmModel filmModel);
   }
 
   @Inject
-  RecentItemsPresenter recentItemsPresenter;
+  FilmListPresenter filmListPresenter;
 
   private ItemPreviewsAdapter itemsAdapter;
-  private RecentItemsListener listener;
+  private FilmListListener listener;
 
-  public RecentItemsFragment() {
+  public FilmListFragment() {
     super();
   }
 
@@ -38,8 +40,8 @@ public class RecentItemsFragment extends ItemListFragment implements RecentItems
   public void onAttach(Context context) {
     super.onAttach(context);
 
-    if (context instanceof RecentItemsListener) {
-      this.listener = (RecentItemsListener) context;
+    if (context instanceof FilmListListener) {
+      this.listener = (FilmListListener) context;
     }
   }
 
@@ -47,41 +49,42 @@ public class RecentItemsFragment extends ItemListFragment implements RecentItems
   public void onResume() {
     super.onResume();
 
-    recentItemsPresenter.resume();
+    filmListPresenter.resume();
   }
 
   @Override
   public void onPause() {
     super.onPause();
 
-    recentItemsPresenter.pause();
+    filmListPresenter.pause();
   }
 
   @Override
   public void onDestroy() {
     super.onDestroy();
 
-    recentItemsPresenter.destroy();
+    filmListPresenter.destroy();
   }
 
   private void initialize() {
     initializeInjector();
-    recentItemsPresenter.setView(this);
+    filmListPresenter.setView(this);
   }
 
   private void initializeInjector() {
-    getComponent(RecentItemsComponent.class).inject(this);
+    getComponent(FilmsComponent.class).inject(this);
   }
 
   private void loadItems() {
-    recentItemsPresenter.loadRecentItems();
+    filmListPresenter.loadFilms();
   }
 
   @Override
-  public void renderRecentItems(List<ItemModel> items) {
+  public void renderFilms(List<FilmModel> films) {
     if (itemsAdapter == null) {
+      List<ItemModel> items = new ArrayList<>(films);
       itemsAdapter = new ItemPreviewsAdapter(getContext(), items,
-          recentItemsPresenter::showDetailsFromItemAtPosition);
+          filmListPresenter::showDetailsFromItemAtPosition);
     }
 
     rvRecentItems.setAdapter(itemsAdapter);
@@ -93,7 +96,7 @@ public class RecentItemsFragment extends ItemListFragment implements RecentItems
   }
 
   @Override
-  public void showDetails(ItemModel itemModel) {
+  public void showDetails(FilmModel itemModel) {
     listener.showDetails(itemModel);
   }
 }

@@ -7,17 +7,17 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import com.arturogutierrez.swcompanion.R;
 import com.arturogutierrez.swcompanion.di.HasComponent;
-import com.arturogutierrez.swcompanion.di.component.DaggerRecentItemsComponent;
-import com.arturogutierrez.swcompanion.di.component.RecentItemsComponent;
-import com.arturogutierrez.swcompanion.di.module.RecentItemsModule;
-import com.arturogutierrez.swcompanion.model.ItemModel;
+import com.arturogutierrez.swcompanion.di.component.DaggerFilmsComponent;
+import com.arturogutierrez.swcompanion.di.component.FilmsComponent;
+import com.arturogutierrez.swcompanion.di.module.FilmsModule;
+import com.arturogutierrez.swcompanion.model.FilmModel;
 import com.arturogutierrez.swcompanion.view.adapter.MainFragmentPageAdapter;
-import com.arturogutierrez.swcompanion.view.fragment.RecentItemsFragment;
+import com.arturogutierrez.swcompanion.view.fragment.FilmListFragment;
 
-public class MainActivity extends BaseActivity implements HasComponent<RecentItemsComponent>,
-    RecentItemsFragment.RecentItemsListener {
+public class MainActivity extends BaseActivity
+    implements HasComponent<FilmsComponent>, FilmListFragment.FilmListListener {
 
-  private RecentItemsComponent recentItemsComponent;
+  private FilmsComponent filmsComponent;
 
   @Bind(R.id.tab_layout)
   TabLayout tabLayout;
@@ -37,13 +37,13 @@ public class MainActivity extends BaseActivity implements HasComponent<RecentIte
   }
 
   @Override
-  public RecentItemsComponent getComponent() {
-    return recentItemsComponent;
+  public FilmsComponent getComponent() {
+    return filmsComponent;
   }
 
   @Override
-  public void showDetails(ItemModel itemModel) {
-    navigator.goToDetails(this, itemModel);
+  public void showDetails(FilmModel filmModel) {
+    navigator.goToDetails(this, filmModel);
   }
 
   private void initializeActivity(Bundle savedInstanceState) {
@@ -54,12 +54,12 @@ public class MainActivity extends BaseActivity implements HasComponent<RecentIte
   }
 
   private void configureInjector() {
-    recentItemsComponent = DaggerRecentItemsComponent.builder()
+    filmsComponent = DaggerFilmsComponent.builder()
         .applicationComponent(getApplicationComponent())
         .activityModule(getActivityModule())
-        .recentItemsModule(new RecentItemsModule())
+        .filmsModule(new FilmsModule())
         .build();
-    recentItemsComponent.inject(this);
+    filmsComponent.inject(this);
     ButterKnife.bind(this);
   }
 

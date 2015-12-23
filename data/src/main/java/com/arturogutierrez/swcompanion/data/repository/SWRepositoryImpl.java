@@ -21,10 +21,13 @@ public class SWRepositoryImpl implements SWRepository {
   @Override
   public Observable<List<Film>> getFilms() {
     SWDataStore cloudDataStore = dataStoreFactory.createCloudStore();
-    SWDataStore diskDataStore = dataStoreFactory.createDiskStore();
+    SWLocalDataStore diskDataStore = dataStoreFactory.createDiskStore();
 
-    Observable<List<Film>> cloudObservable = cloudDataStore.getFilms();
     Observable<List<Film>> diskObservable = diskDataStore.getFilms();
+    Observable<List<Film>> cloudObservable = cloudDataStore.getFilms()
+        .flatMap(Observable::from)
+        .doOnNext(diskDataStore::saveFilm)
+        .toList();
 
     return Observable.concat(diskObservable, cloudObservable).first();
   }

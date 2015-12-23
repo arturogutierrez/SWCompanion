@@ -5,5 +5,5 @@
 
   <!-- Films -->
   <string name="episode">Episode %d</string>
-  <string name="recent_items">Recent Items</string>
+  <string name="films">Films</string>
 </resources>
