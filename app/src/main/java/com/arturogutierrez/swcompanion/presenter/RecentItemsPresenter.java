@@ -7,6 +7,7 @@ import com.arturogutierrez.swcompanion.domain.model.Item;
 import com.arturogutierrez.swcompanion.model.ItemModel;
 import com.arturogutierrez.swcompanion.model.mapper.ItemModelMapper;
 import com.arturogutierrez.swcompanion.view.RecentItemsView;
+import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 
@@ -15,6 +16,7 @@ public class RecentItemsPresenter extends DefaultSubscriber<List<Item>> implemen
 
   private final RecentItemsInteractor recentItemsInteractor;
   private final ItemModelMapper itemModelMapper;
+  private final List<Item> recentItems;
 
   private RecentItemsView recentItemsView;
 
@@ -23,6 +25,7 @@ public class RecentItemsPresenter extends DefaultSubscriber<List<Item>> implemen
       ItemModelMapper itemModelMapper) {
     this.recentItemsInteractor = recentItemsInteractor;
     this.itemModelMapper = itemModelMapper;
+    this.recentItems = new ArrayList<>();
   }
 
   public void setView(RecentItemsView recentItemsView) {
@@ -58,13 +61,26 @@ public class RecentItemsPresenter extends DefaultSubscriber<List<Item>> implemen
   public void onError(Throwable e) {
     hideLoading();
 
-    // TODO: Show an error to the user
+    recentItemsView.viewNoItems();
   }
 
   @Override
-  public void onNext(List<Item> recentItems) {
+  public void onNext(List<Item> recentItemsLoaded) {
+    if (recentItemsLoaded == null || recentItemsLoaded.size() == 0) {
+      recentItemsView.viewNoItems();
+      return;
+    }
+
+    recentItems.clear();
+    recentItems.addAll(recentItemsLoaded);
+
     List<ItemModel> itemModelList = itemModelMapper.transform(recentItems);
     recentItemsView.renderRecentItems(itemModelList);
+  }
+
+  public void showDetailsFromItemAtPosition(int position) {
+    Item item = recentItems.get(position);
+    recentItemsView.showDetails(itemModelMapper.transform(item));
   }
 
   private void showLoading() {

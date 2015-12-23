@@ -10,9 +10,12 @@ import com.arturogutierrez.swcompanion.di.HasComponent;
 import com.arturogutierrez.swcompanion.di.component.DaggerRecentItemsComponent;
 import com.arturogutierrez.swcompanion.di.component.RecentItemsComponent;
 import com.arturogutierrez.swcompanion.di.module.RecentItemsModule;
+import com.arturogutierrez.swcompanion.model.ItemModel;
 import com.arturogutierrez.swcompanion.view.adapter.MainFragmentPageAdapter;
+import com.arturogutierrez.swcompanion.view.fragment.RecentItemsFragment;
 
-public class MainActivity extends BaseActivity implements HasComponent<RecentItemsComponent> {
+public class MainActivity extends BaseActivity implements HasComponent<RecentItemsComponent>,
+    RecentItemsFragment.RecentItemsListener {
 
   private RecentItemsComponent recentItemsComponent;
 
@@ -36,6 +39,11 @@ public class MainActivity extends BaseActivity implements HasComponent<RecentIte
   @Override
   public RecentItemsComponent getComponent() {
     return recentItemsComponent;
+  }
+
+  @Override
+  public void showDetails(ItemModel itemModel) {
+    navigator.goToDetails(this, itemModel);
   }
 
   private void initializeActivity(Bundle savedInstanceState) {

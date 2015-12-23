@@ -14,6 +14,8 @@ import com.arturogutierrez.swcompanion.R;
 import com.arturogutierrez.swcompanion.application.SWApplication;
 import com.arturogutierrez.swcompanion.di.component.ApplicationComponent;
 import com.arturogutierrez.swcompanion.di.module.ActivityModule;
+import com.arturogutierrez.swcompanion.navigator.Navigator;
+import javax.inject.Inject;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
@@ -23,6 +25,9 @@ public abstract class BaseActivity extends AppCompatActivity {
   @Bind(R.id.drawerLayout)
   protected DrawerLayout drawerLayout;
   protected ActionBarDrawerToggle drawerToggle;
+
+  @Inject
+  protected Navigator navigator;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

@@ -17,11 +17,14 @@ public class ItemPreviewsAdapter extends RecyclerView.Adapter<PreviewItemViewHol
   private final Context context;
   private final LayoutInflater layoutInflater;
   private final List<ItemModel> itemModelList;
+  private final RecyclerClickListener recyclerClickListener;
 
-  public ItemPreviewsAdapter(Context context, List<ItemModel> itemModelList) {
+  public ItemPreviewsAdapter(Context context, List<ItemModel> itemModelList,
+      RecyclerClickListener recyclerClickListener) {
     this.context = context;
     this.layoutInflater = LayoutInflater.from(context);
     this.itemModelList = itemModelList;
+    this.recyclerClickListener = recyclerClickListener;
   }
 
   @Override
@@ -38,6 +41,8 @@ public class ItemPreviewsAdapter extends RecyclerView.Adapter<PreviewItemViewHol
     // TODO: Check type correctly
     FilmPreviewViewHolder filmPreviewViewHolder = (FilmPreviewViewHolder) holder;
     filmPreviewViewHolder.showFilm(context, (FilmModel) itemModel);
+    filmPreviewViewHolder.itemView.setOnClickListener(
+        v -> recyclerClickListener.onElementClicked(position));
   }
 
   @Override

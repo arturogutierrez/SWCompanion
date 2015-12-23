@@ -1,5 +1,6 @@
 package com.arturogutierrez.swcompanion.view.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import com.arturogutierrez.swcompanion.di.component.RecentItemsComponent;
 import com.arturogutierrez.swcompanion.model.ItemModel;
@@ -11,10 +12,15 @@ import javax.inject.Inject;
 
 public class RecentItemsFragment extends ItemListFragment implements RecentItemsView {
 
+  public interface RecentItemsListener {
+    void showDetails(final ItemModel itemModel);
+  }
+
   @Inject
   RecentItemsPresenter recentItemsPresenter;
 
   private ItemPreviewsAdapter itemsAdapter;
+  private RecentItemsListener listener;
 
   public RecentItemsFragment() {
     super();
@@ -26,6 +32,15 @@ public class RecentItemsFragment extends ItemListFragment implements RecentItems
 
     initialize();
     loadItems();
+  }
+
+  @Override
+  public void onAttach(Context context) {
+    super.onAttach(context);
+
+    if (context instanceof RecentItemsListener) {
+      this.listener = (RecentItemsListener) context;
+    }
   }
 
   @Override
@@ -65,7 +80,8 @@ public class RecentItemsFragment extends ItemListFragment implements RecentItems
   @Override
   public void renderRecentItems(List<ItemModel> items) {
     if (itemsAdapter == null) {
-      itemsAdapter = new ItemPreviewsAdapter(getContext(), items);
+      itemsAdapter = new ItemPreviewsAdapter(getContext(), items,
+          recentItemsPresenter::showDetailsFromItemAtPosition);
     }
 
     rvRecentItems.setAdapter(itemsAdapter);
@@ -74,5 +90,10 @@ public class RecentItemsFragment extends ItemListFragment implements RecentItems
   @Override
   public void viewNoItems() {
 
+  }
+
+  @Override
+  public void showDetails(ItemModel itemModel) {
+    listener.showDetails(itemModel);
   }
 }

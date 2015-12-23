@@ -8,4 +8,6 @@ public interface RecentItemsView extends LoadDataView {
   void renderRecentItems(List<ItemModel> items);
 
   void viewNoItems();
+
+  void showDetails(ItemModel transform);
 }
